@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/Assisitive_Eye_Tracking/src/com/UI/main.java"/>
+<listEntry value="/Assisitive_Eye_Tracking/src/com/ui/main.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.UI.main"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.ui.main"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Assisitive_Eye_Tracking"/>
 </launchConfiguration>
