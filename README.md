@@ -2,8 +2,8 @@
 
 Assitive Eye tracking headset for 2015 ECE Senior Design Class
 
-Package description:
-com.camera: Camera interface
-com.imu: IMU interface
-com.calc: Tracking algorithm
-com.ui: User interface. main
+<h1>Package description:</h1>
+com.camera: Camera interface<br>
+com.imu: IMU interface<br>
+com.calc: Tracking algorithm<br>
+com.ui: User interface. main<br>
