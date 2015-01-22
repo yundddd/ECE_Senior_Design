@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Assistive_Eye_Tracking&apos;" deleteContents="true" description="Delete resource &apos;Assistive_Eye_Tracking&apos;" element1="/Assistive_Eye_Tracking" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1421899180161"/>
+</session>
