@@ -78,13 +78,13 @@ Program Memory  [Origin = 0x200, Length = 0x155ec]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x186           0x249  (585)
-.const                       0x386                0x62            0x93  (147)
-.text                        0x3e8               0x2aa           0x3ff  (1023)
-.init.delay32                0x692                0x1c            0x2a  (42)
-.text                        0x6ae                0x22            0x33  (51)
-.dinit                       0x6d0                 0x2             0x3  (3)
+.const                       0x386                0x28            0x3c  (60)
+.text                        0x3ae               0x26e           0x3a5  (933)
+.init.delay32                0x61c                0x1c            0x2a  (42)
+.text                        0x638                0x22            0x33  (51)
+.dinit                       0x65a                 0x2             0x3  (3)
 
-                     Total program memory used (bytes):          0x73b  (1851) 1%
+                     Total program memory used (bytes):          0x68a  (1674) 1%
 
 
 Data Memory  [Origin = 0x1000, Length = 0x4000]
@@ -126,30 +126,30 @@ External Symbols in Program Memory (by address):
                   0x00036c                  _OpenI2C1
                   0x000376                  _StartI2C1
                   0x00037e                  _StopI2C1
-                  0x0003e8                  _InitApp
-                  0x0003f4                  _InitIO
-                  0x000408                  _MapPins
-                  0x00044a                  _InitTimer
-                  0x000472                  _initUART1
-                  0x0004c8                  _intiI2C1
-                  0x000506                  _print_line_uart1
-                  0x000548                  _print_uart1
-                  0x000576                  _I2C1_write_byte
-                  0x0005f6                  _I2C1_read_byte
-                  0x000692                  ___delay32
-                  0x0006ae                  _main
-                  0x0006c2                  _ConfigureOscillator
+                  0x0003ae                  _InitApp
+                  0x0003c4                  _InitIO
+                  0x0003d8                  _MapPins
+                  0x00041a                  _InitTimer
+                  0x000442                  _initUART1
+                  0x000498                  _intiI2C1
+                  0x0004c8                  _print_line_uart1
+                  0x00050a                  _print_uart1
+                  0x000538                  _I2C1_write_byte
+                  0x00059a                  _I2C1_read_byte
+                  0x00061c                  ___delay32
+                  0x000638                  _main
+                  0x00064c                  _ConfigureOscillator
 
 External Symbols in Program Memory (by name):
 
-                  0x0006c2                  _ConfigureOscillator
-                  0x0005f6                  _I2C1_read_byte
-                  0x000576                  _I2C1_write_byte
+                  0x00064c                  _ConfigureOscillator
+                  0x00059a                  _I2C1_read_byte
+                  0x000538                  _I2C1_write_byte
                   0x000306                  _IdleI2C1
-                  0x0003e8                  _InitApp
-                  0x0003f4                  _InitIO
-                  0x00044a                  _InitTimer
-                  0x000408                  _MapPins
+                  0x0003ae                  _InitApp
+                  0x0003c4                  _InitIO
+                  0x00041a                  _InitTimer
+                  0x0003d8                  _MapPins
                   0x00032a                  _MasterReadI2C1
                   0x00033a                  _MasterWriteI2C1
                   0x000362                  _NotAckI2C1
@@ -164,16 +164,16 @@ External Symbols in Program Memory (by name):
                   0x0002d2                  __OscillatorFail
                   0x000302                  __SoftTrapError
                   0x0002e2                  __StackError
-                  0x000692                  ___delay32
+                  0x00061c                  ___delay32
                   0x000238                  __data_init
                   0x000238                  __data_init_extended
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000472                  _initUART1
-                  0x0004c8                  _intiI2C1
-                  0x0006ae                  _main
-                  0x000506                  _print_line_uart1
-                  0x000548                  _print_uart1
+                  0x000442                  _initUART1
+                  0x000498                  _intiI2C1
+                  0x000638                  _main
+                  0x0004c8                  _print_line_uart1
+                  0x00050a                  _print_uart1
 
 Memory Configuration
 
@@ -304,14 +304,14 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x230f
+.debug_info       0x000000       0x234c
  *(.debug_info)
  .debug_info      0x000000         0xad build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
  .debug_info      0x0000ad        0x118 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
  .debug_info      0x0001c5        0x467 build/C30_dsPIC33FJ256GP710A/production/main.o
  .debug_info      0x00062c        0x180 build/C30_dsPIC33FJ256GP710A/production/system.o
  .debug_info      0x0007ac        0x38a build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_info      0x000b36       0x17d9 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_info      0x000b36       0x1816 build/C30_dsPIC33FJ256GP710A/production/user.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x2f1
@@ -323,14 +323,14 @@ __FUID3
  .debug_abbrev    0x000116         0x7d build/C30_dsPIC33FJ256GP710A/production/traps.o
  .debug_abbrev    0x000193        0x15e build/C30_dsPIC33FJ256GP710A/production/user.o
 
-.debug_line       0x000000        0x891
+.debug_line       0x000000        0x844
  *(.debug_line)
  .debug_line      0x000000         0x24 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
  .debug_line      0x000024         0x24 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
  .debug_line      0x000048        0x126 build/C30_dsPIC33FJ256GP710A/production/main.o
  .debug_line      0x00016e         0xba build/C30_dsPIC33FJ256GP710A/production/system.o
  .debug_line      0x000228        0x187 build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_line      0x0003af        0x4e2 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_line      0x0003af        0x495 build/C30_dsPIC33FJ256GP710A/production/user.o
 
 .debug_frame      0x000000        0x190
  *(.debug_frame)
@@ -1704,32 +1704,32 @@ __c30_signature
  .config_JTAGEN
                   0x0157f0          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
 
-.const              0x8386         0x62 load address 0x000386  
- .const             0x8386         0x52 build/C30_dsPIC33FJ256GP710A/production/user.o
- .const             0x83d8         0x10 build/C30_dsPIC33FJ256GP710A/production/main.o
+.const              0x8386         0x28 load address 0x000386  
+ .const             0x8386         0x18 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .const             0x839e         0x10 build/C30_dsPIC33FJ256GP710A/production/main.o
 
-.text             0x0003e8        0x2aa
- .text            0x0003e8        0x2aa build/C30_dsPIC33FJ256GP710A/production/user.o
-                  0x0003e8                  _InitApp
-                  0x0003f4                  _InitIO
-                  0x000408                  _MapPins
-                  0x00044a                  _InitTimer
-                  0x000472                  _initUART1
-                  0x0004c8                  _intiI2C1
-                  0x000506                  _print_line_uart1
-                  0x000548                  _print_uart1
-                  0x000576                  _I2C1_write_byte
-                  0x0005f6                  _I2C1_read_byte
+.text             0x0003ae        0x26e
+ .text            0x0003ae        0x26e build/C30_dsPIC33FJ256GP710A/production/user.o
+                  0x0003ae                  _InitApp
+                  0x0003c4                  _InitIO
+                  0x0003d8                  _MapPins
+                  0x00041a                  _InitTimer
+                  0x000442                  _initUART1
+                  0x000498                  _intiI2C1
+                  0x0004c8                  _print_line_uart1
+                  0x00050a                  _print_uart1
+                  0x000538                  _I2C1_write_byte
+                  0x00059a                  _I2C1_read_byte
 
-.init.delay32     0x000692         0x1c
- .init.delay32    0x000692         0x1c d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                  0x000692                  ___delay32
+.init.delay32     0x00061c         0x1c
+ .init.delay32    0x00061c         0x1c d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x00061c                  ___delay32
 
-.text             0x0006ae         0x22
- .text            0x0006ae         0x14 build/C30_dsPIC33FJ256GP710A/production/main.o
-                  0x0006ae                  _main
- .text            0x0006c2          0xe build/C30_dsPIC33FJ256GP710A/production/system.o
-                  0x0006c2                  _ConfigureOscillator
+.text             0x000638         0x22
+ .text            0x000638         0x14 build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x000638                  _main
+ .text            0x00064c          0xe build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x00064c                  _ConfigureOscillator
 
-.dinit            0x0006d0          0x2
- .dinit           0x0006d0          0x2 data_init
+.dinit            0x00065a          0x2
+ .dinit           0x00065a          0x2 data_init

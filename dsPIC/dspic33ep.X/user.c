@@ -22,6 +22,7 @@
 #define readAddr(addr) ( (addr << 1) | 0x01)
 #define SYS_FREQ        140000000L
 #define FCY             SYS_FREQ/2
+#define I2C_BRG(freq) (FCY/freq-FCY/1111111)-1
 #include <libpic30.h>
 /******************************************************************************/
 /* User Functions                                                             */
@@ -34,6 +35,9 @@ void InitApp(void) {
     MapPins();
     // InitTimer();
     initUART1();
+    LATBbits.LATB6 = 1;
+    __delay_ms(1000);
+    LATBbits.LATB6 = 0;
     //intiI2C1();
 }
 
@@ -129,23 +133,56 @@ void initUART1(void) {
 void intiI2C1(void) {
     unsigned int config2, config1;
     char data;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     //int MPU9150_I2C_ADDRESS = 0x69;
-    config2 = 0x11; //400Khz
+    config2 = I2C_BRG(88500); //100Khz
+    //config2 = 690;
     /* Configure I2C for 7 bit address mode */
     config1 = (I2C1_ON & I2C1_IDLE_CON & I2C1_CLK_HLD &
             I2C1_IPMI_DIS & I2C1_7BIT_ADD &
             I2C1_SLW_DIS & I2C1_SM_DIS &
-            I2C1_GCALL_DIS & I2C1_STR_EN &
+            I2C1_GCALL_DIS & I2C1_STR_DIS &
             I2C1_NACK & I2C1_ACK_DIS & I2C1_RCV_DIS &
             I2C1_STOP_DIS & I2C1_RESTART_DIS &
             I2C1_START_DIS);
 
     print_line_uart1("I2C routine", 11);
-    IEC1bits.MI2C1IE = 0; //Master Event Interrupts Disabled.
-    IEC1bits.SI2C1IE = 0; //Slave Event Interrupts Disabled.
+    // IEC1bits.MI2C1IE = 0; //Master Event Interrupts Disabled.
+    //  IEC1bits.SI2C1IE = 0; //Slave Event Interrupts Disabled.
     OpenI2C1(config1, config2);
 
     print_line_uart1("I2C opened", 10);
+I2C1_write_byte(MPU9150_CLOCK_PLL_XGYRO | 0x07, MPU9150_DEFAULT_ADDRESS, MPU9150_RA_PWR_MGMT_1); //data,device,value
+  //  while (1) {
+      //  IdleI2C1();
+      //  StartI2C1(); //S
+        /* Wait till Start sequence is completed */
+    //    while (I2C1CONbits.SEN);
+        //print_line_uart1("I2C started", 11);
+       // MasterWriteI2C1(writeAddr(MPU9150_DEFAULT_ADDRESS));
+       // StopI2C1();
+      //  __delay_ms(1);
+
+       
+     // I2C1_read_byte
+        
+          data = I2C1_read_byte(MPU9150_DEFAULT_ADDRESS, MPU9150_RA_WHO_AM_I); //device, reg
+   // }
+          while(1);
 
     I2C1_write_byte(MPU9150_CLOCK_PLL_XGYRO | 0x07, MPU9150_DEFAULT_ADDRESS, MPU9150_RA_PWR_MGMT_1); //data,device,value
     data = I2C1_read_byte(MPU9150_DEFAULT_ADDRESS, MPU9150_RA_WHO_AM_I); //device, reg
@@ -183,18 +220,18 @@ void I2C1_write_byte(char data, int device, int reg) {
     StartI2C1(); //S
     /* Wait till Start sequence is completed */
     while (I2C1CONbits.SEN);
-    print_line_uart1("I2C started", 11);
+   // print_line_uart1("I2C started", 11);
     MasterWriteI2C1(writeAddr(device)); //AD + W
     while (I2C1STATbits.TBF); //wait for transmission
-    print_line_uart1("slave address transmitted", 25);
+  //  print_line_uart1("slave address transmitted", 25);
     while (I2C1STATbits.ACKSTAT); //wait for ACK
-    print_line_uart1("ACK received", 12);
+  //  print_line_uart1("ACK received", 12);
     MasterWriteI2C1(reg); //RA
     while (I2C1STATbits.ACKSTAT); //wait for ACK
-    print_line_uart1("ACK received", 12);
+  //  print_line_uart1("ACK received", 12);
     MasterWriteI2C1(data); //DATA
     while (I2C1STATbits.ACKSTAT); //wait for ACK
-    print_line_uart1("ACK received", 12);
+  //  print_line_uart1("ACK received", 12);
 
     StopI2C1();
 }
@@ -205,23 +242,27 @@ char I2C1_read_byte(int device, int reg) {
     StartI2C1(); //S
     /* Wait till Start sequence is completed */
     while (I2C1CONbits.SEN);
-    print_line_uart1("I2C started", 11);
+    //print_line_uart1("I2C started", 11);
     MasterWriteI2C1(writeAddr(device)); //AD + W
     while (I2C1STATbits.TBF); //wait for transmission
-    print_line_uart1("slave address transmitted", 25);
+    //print_line_uart1("slave address transmitted", 25);
     while (I2C1STATbits.ACKSTAT); //wait for ACK
-    print_line_uart1("ACK received", 12);
+    //print_line_uart1("ACK received", 12);
     MasterWriteI2C1(reg); //RA
     while (I2C1STATbits.ACKSTAT); //wait for ACK
-    print_line_uart1("ACK received", 12);
+    //print_line_uart1("ACK received", 12);
+
+   // __delay_us(10);
     StartI2C1(); //S
     MasterWriteI2C1(readAddr(device)); //AD + R
     while (I2C1STATbits.ACKSTAT); //wait for ACK
-    print_line_uart1("ACK received", 12);
+    //print_line_uart1("ACK received", 12);
     data = MasterReadI2C1(); //DATA
 
     NotAckI2C1(); //Master NACK
     StopI2C1(); //STTOP
-    print_line_uart1("stopped", 7);
+    while (I2C1CONbits.PEN);
+   // print_line_uart1("stopped", 7);
+   // IdleI2C1();
     return data;
 }
