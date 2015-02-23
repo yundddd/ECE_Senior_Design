@@ -44,7 +44,7 @@ int16_t main(void) {
     LATBbits.LATB6 = 0;
 
 
-    intiI2C1();
+   
     print_line_uart1("dsPIC is ready", 14);
     
     while (1) {

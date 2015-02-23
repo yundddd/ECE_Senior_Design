@@ -6,7 +6,7 @@ Tool Name:
 Command:
   -p33EP128MC202 \
   -o \
-  dist/C30_dsPIC33FJ256GP710A/production/dspic33ep.X.production.elf \
+  dist/C30_dsPIC33FJ256GP710A/debug/dspic33ep.X.debug.elf \
   -Ld:/program files (x86)/microchip/xc16/v1.23/bin/bin/.. \
   -Ld:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib \
   -Ld:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/PIC24E \
@@ -21,15 +21,25 @@ Command:
   -Ld:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../support/dsPIC33E/gld \
   -Ld:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33F \
   -Ld:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../support/dsPIC33F/gld \
-  build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o \
-  build/C30_dsPIC33FJ256GP710A/production/interrupts.o \
-  build/C30_dsPIC33FJ256GP710A/production/main.o \
-  build/C30_dsPIC33FJ256GP710A/production/system.o \
-  build/C30_dsPIC33FJ256GP710A/production/traps.o \
-  build/C30_dsPIC33FJ256GP710A/production/user.o \
+  build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o \
+  build/C30_dsPIC33FJ256GP710A/debug/interrupts.o \
+  build/C30_dsPIC33FJ256GP710A/debug/main.o \
+  build/C30_dsPIC33FJ256GP710A/debug/system.o \
+  build/C30_dsPIC33FJ256GP710A/debug/traps.o \
+  build/C30_dsPIC33FJ256GP710A/debug/user.o \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001e40.00 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001e40.01 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001e40.02 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001e40.03 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001e40.04 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001e40.05 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001e40.06 \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
-  -Tp33EP128MC202.gld.00 \
+  --defsym=__MPLAB_DEBUG=1 \
+  --defsym=__DEBUG=1 \
+  --defsym=__MPLAB_DEBUGGER_PK3=1 \
+  -Tp33EP128MC202.gld.07 \
   --stack=16 \
   --check-sections \
   --data-init \
@@ -41,7 +51,7 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/C30_dsPIC33FJ256GP710A/production/dspic33ep.X.production.map \
+  -Map=dist/C30_dsPIC33FJ256GP710A/debug/dspic33ep.X.debug.map \
   --report-mem \
   -start-group \
   --library=pic30-elf \
@@ -52,33 +62,33 @@ Command:
 Archive member included because of file (symbol)
 
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(AckI2C1.o)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (_AckI2C1)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (_AckI2C1)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(IdleI2C1.o)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (_IdleI2C1)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (_IdleI2C1)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(MasterReadI2C1.o)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (_MasterReadI2C1)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (_MasterReadI2C1)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(MasterWriteI2C1.o)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (_MasterWriteI2C1)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (_MasterWriteI2C1)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(NotAckI2C1.o)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (_NotAckI2C1)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (_NotAckI2C1)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(OpenI2C1.o)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (_OpenI2C1)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (_OpenI2C1)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(StartI2C1.o)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (_StartI2C1)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (_StartI2C1)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(StopI2C1.o)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (_StopI2C1)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (_StopI2C1)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
                               (__resetPRI)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
                               d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o) (__data_init_extended)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (___delay32)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (___delay32)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(divsf3.epeo)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (___divsf3)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (___divsf3)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (_(float, int, long long, short, float, short, int))
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (_(float, int, long long, short, float, short, int))
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatsisf.epeo)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (___floatsisf)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (___floatsisf)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fpack.epeo)
                               d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(divsf3.epeo) (__fpack)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack.epeo)
@@ -111,8 +121,15 @@ Data Memory  [Origin = 0x1000, Length = 0x4000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
+reserve_data_0x1000         0x1000                0x1c            0x1c  (28)
+reserve_data_0x101c         0x101c                 0x2             0x2  (2)
+reserve_data_0x101e         0x101e                 0x2             0x2  (2)
+reserve_data_0x1020         0x1020                 0x2             0x2  (2)
+reserve_data_0x1022         0x1022                 0x2             0x2  (2)
+reserve_data_0x1024         0x1024                 0x4             0x4  (4)
+reserve_data_0x1028         0x1028                0x28            0x28  (40)
 
-                        Total data memory used (bytes):              0  (0) 
+                        Total data memory used (bytes):           0x50  (80) <1%
 
 
 Dynamic Memory Usage
@@ -120,9 +137,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x1000                              0x4000  (16384)
+stack                       0x1050                              0x3fb0  (16304)
 
-                        Maximum dynamic memory (bytes):         0x4000  (16384)
+                        Maximum dynamic memory (bytes):         0x3fb0  (16304)
 
 
 External Symbols in Program Memory (by address):
@@ -250,13 +267,51 @@ FUID3            0x800ffe           0x000002
 
 Linker script and memory map
 
-LOAD build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
-LOAD build/C30_dsPIC33FJ256GP710A/production/interrupts.o
-LOAD build/C30_dsPIC33FJ256GP710A/production/main.o
-LOAD build/C30_dsPIC33FJ256GP710A/production/system.o
-LOAD build/C30_dsPIC33FJ256GP710A/production/traps.o
-LOAD build/C30_dsPIC33FJ256GP710A/production/user.o
+LOAD build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
+LOAD build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
+LOAD build/C30_dsPIC33FJ256GP710A/debug/main.o
+LOAD build/C30_dsPIC33FJ256GP710A/debug/system.o
+LOAD build/C30_dsPIC33FJ256GP710A/debug/traps.o
+LOAD build/C30_dsPIC33FJ256GP710A/debug/user.o
+
+reserve_data_0x1000
+                    0x1000         0x1c
+                    0x101c                  . = 0x1c
+ *fill*             0x1000         0x1c00
+
+reserve_data_0x101c
+                    0x101c          0x2
+                    0x101e                  . = 0x2
+ *fill*             0x101c          0x200
+
+reserve_data_0x101e
+                    0x101e          0x2
+                    0x1020                  . = 0x2
+ *fill*             0x101e          0x200
+
+reserve_data_0x1020
+                    0x1020          0x2
+                    0x1022                  . = 0x2
+ *fill*             0x1020          0x200
+
+reserve_data_0x1022
+                    0x1022          0x2
+                    0x1024                  . = 0x2
+ *fill*             0x1022          0x200
+
+reserve_data_0x1024
+                    0x1024          0x4
+                    0x1028                  . = 0x4
+ *fill*             0x1024          0x400
+
+reserve_data_0x1028
+                    0x1028         0x28
+                    0x1050                  . = 0x28
+ *fill*             0x1028         0x2800
                     0x0001                  __MPLAB_BUILD = 0x1
+                    0x0001                  __MPLAB_DEBUG = 0x1
+                    0x0001                  __DEBUG = 0x1
+                    0x0001                  __MPLAB_DEBUGGER_PK3 = 0x1
 LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a
 LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libfx-elf.a
                     0x157f0                  __FICD = 0x157f0
@@ -294,7 +349,7 @@ LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libfx-elf.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x0002d2         0x34 build/C30_dsPIC33FJ256GP710A/production/traps.o
+ .isr.text        0x0002d2         0x34 build/C30_dsPIC33FJ256GP710A/debug/traps.o
                   0x0002d2                  __OscillatorFail
                   0x0002da                  __AddressError
                   0x0002e2                  __StackError
@@ -391,44 +446,44 @@ __FUID3
 
 .debug_info       0x000000       0x266c
  *(.debug_info)
- .debug_info      0x000000         0xad build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
- .debug_info      0x0000ad        0x118 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
- .debug_info      0x0001c5        0x467 build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_info      0x00062c        0x180 build/C30_dsPIC33FJ256GP710A/production/system.o
- .debug_info      0x0007ac        0x38a build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_info      0x000b36       0x1b36 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_info      0x000000         0xad build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
+ .debug_info      0x0000ad        0x118 build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
+ .debug_info      0x0001c5        0x467 build/C30_dsPIC33FJ256GP710A/debug/main.o
+ .debug_info      0x00062c        0x180 build/C30_dsPIC33FJ256GP710A/debug/system.o
+ .debug_info      0x0007ac        0x38a build/C30_dsPIC33FJ256GP710A/debug/traps.o
+ .debug_info      0x000b36       0x1b36 build/C30_dsPIC33FJ256GP710A/debug/user.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000        0x354
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0x1f build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
- .debug_abbrev    0x00001f         0x1f build/C30_dsPIC33FJ256GP710A/production/interrupts.o
- .debug_abbrev    0x00003e         0x8c build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_abbrev    0x0000ca         0x4c build/C30_dsPIC33FJ256GP710A/production/system.o
- .debug_abbrev    0x000116         0x7d build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_abbrev    0x000193        0x1c1 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_abbrev    0x000000         0x1f build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
+ .debug_abbrev    0x00001f         0x1f build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
+ .debug_abbrev    0x00003e         0x8c build/C30_dsPIC33FJ256GP710A/debug/main.o
+ .debug_abbrev    0x0000ca         0x4c build/C30_dsPIC33FJ256GP710A/debug/system.o
+ .debug_abbrev    0x000116         0x7d build/C30_dsPIC33FJ256GP710A/debug/traps.o
+ .debug_abbrev    0x000193        0x1c1 build/C30_dsPIC33FJ256GP710A/debug/user.o
 
 .debug_line       0x000000        0xbb8
  *(.debug_line)
- .debug_line      0x000000         0x24 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
- .debug_line      0x000024         0x24 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
- .debug_line      0x000048        0x11e build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_line      0x000166         0xba build/C30_dsPIC33FJ256GP710A/production/system.o
- .debug_line      0x000220        0x187 build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_line      0x0003a7        0x811 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_line      0x000000         0x24 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
+ .debug_line      0x000024         0x24 build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
+ .debug_line      0x000048        0x11e build/C30_dsPIC33FJ256GP710A/debug/main.o
+ .debug_line      0x000166         0xba build/C30_dsPIC33FJ256GP710A/debug/system.o
+ .debug_line      0x000220        0x187 build/C30_dsPIC33FJ256GP710A/debug/traps.o
+ .debug_line      0x0003a7        0x811 build/C30_dsPIC33FJ256GP710A/debug/user.o
 
 .debug_frame      0x000000        0x1e0
  *(.debug_frame)
- .debug_frame     0x000000         0x24 build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_frame     0x000024         0x24 build/C30_dsPIC33FJ256GP710A/production/system.o
- .debug_frame     0x000048         0x94 build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_frame     0x0000dc        0x104 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_frame     0x000000         0x24 build/C30_dsPIC33FJ256GP710A/debug/main.o
+ .debug_frame     0x000024         0x24 build/C30_dsPIC33FJ256GP710A/debug/system.o
+ .debug_frame     0x000048         0x94 build/C30_dsPIC33FJ256GP710A/debug/traps.o
+ .debug_frame     0x0000dc        0x104 build/C30_dsPIC33FJ256GP710A/debug/user.o
 
 .debug_str        0x000000         0xb4
  *(.debug_str)
- .debug_str       0x000000         0x13 build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_str       0x000013          0xc build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_str       0x00001f         0x95 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_str       0x000000         0x13 build/C30_dsPIC33FJ256GP710A/debug/main.o
+ .debug_str       0x000013          0xc build/C30_dsPIC33FJ256GP710A/debug/traps.o
+ .debug_str       0x00001f         0x95 build/C30_dsPIC33FJ256GP710A/debug/user.o
 
 .debug_loc
  *(.debug_loc)
@@ -440,13 +495,13 @@ __FUID3
                   0x000000        0x1e9
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x1b build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x000000         0x1b build/C30_dsPIC33FJ256GP710A/debug/main.o
  .debug_pubnames
-                  0x00001b         0x2a build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x00001b         0x2a build/C30_dsPIC33FJ256GP710A/debug/system.o
  .debug_pubnames
-                  0x000045         0xa2 build/C30_dsPIC33FJ256GP710A/production/traps.o
+                  0x000045         0xa2 build/C30_dsPIC33FJ256GP710A/debug/traps.o
  .debug_pubnames
-                  0x0000e7        0x102 build/C30_dsPIC33FJ256GP710A/production/user.o
+                  0x0000e7        0x102 build/C30_dsPIC33FJ256GP710A/debug/user.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -454,13 +509,13 @@ __FUID3
 .debug_aranges    0x000000         0x60
  *(.debug_aranges)
  .debug_aranges
-                  0x000000         0x18 build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x000000         0x18 build/C30_dsPIC33FJ256GP710A/debug/main.o
  .debug_aranges
-                  0x000018         0x18 build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x000018         0x18 build/C30_dsPIC33FJ256GP710A/debug/system.o
  .debug_aranges
-                  0x000030         0x18 build/C30_dsPIC33FJ256GP710A/production/traps.o
+                  0x000030         0x18 build/C30_dsPIC33FJ256GP710A/debug/traps.o
  .debug_aranges
-                  0x000048         0x18 build/C30_dsPIC33FJ256GP710A/production/user.o
+                  0x000048         0x18 build/C30_dsPIC33FJ256GP710A/debug/user.o
 
 .ivt              0x000004        0x13e
                   0x000004          0x4 LONG 0x2d2 DEFINED (__OscillatorFail)?ABSOLUTE (__OscillatorFail):ABSOLUTE (__DefaultInterrupt)
@@ -1715,38 +1770,38 @@ LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.
 LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a
 LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libc-elf.a
 END GROUP
-OUTPUT(dist/C30_dsPIC33FJ256GP710A/production/dspic33ep.X.production.elf elf32-pic30)
+OUTPUT(dist/C30_dsPIC33FJ256GP710A/debug/dspic33ep.X.debug.elf elf32-pic30)
 LOAD data_init
 
 .debug_pubtypes
                   0x000060        0x28d
  .debug_pubtypes
-                  0x000060         0x12 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+                  0x000060         0x12 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
  .debug_pubtypes
-                  0x000072         0x12 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
+                  0x000072         0x12 build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
  .debug_pubtypes
-                  0x000084         0x5a build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x000084         0x5a build/C30_dsPIC33FJ256GP710A/debug/main.o
  .debug_pubtypes
-                  0x0000de         0x12 build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x0000de         0x12 build/C30_dsPIC33FJ256GP710A/debug/system.o
  .debug_pubtypes
-                  0x0000f0         0x35 build/C30_dsPIC33FJ256GP710A/production/traps.o
+                  0x0000f0         0x35 build/C30_dsPIC33FJ256GP710A/debug/traps.o
  .debug_pubtypes
-                  0x000125        0x1c8 build/C30_dsPIC33FJ256GP710A/production/user.o
+                  0x000125        0x1c8 build/C30_dsPIC33FJ256GP710A/debug/user.o
 
 __c30_signature
                   0x0002ee         0x9c
  __c30_signature
-                  0x0002ee          0x6 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+                  0x0002ee          0x6 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
  __c30_signature
-                  0x0002f4          0x6 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
+                  0x0002f4          0x6 build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
  __c30_signature
-                  0x0002fa          0x6 build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x0002fa          0x6 build/C30_dsPIC33FJ256GP710A/debug/main.o
  __c30_signature
-                  0x000300          0x6 build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x000300          0x6 build/C30_dsPIC33FJ256GP710A/debug/system.o
  __c30_signature
-                  0x000306          0x6 build/C30_dsPIC33FJ256GP710A/production/traps.o
+                  0x000306          0x6 build/C30_dsPIC33FJ256GP710A/debug/traps.o
  __c30_signature
-                  0x00030c          0x6 build/C30_dsPIC33FJ256GP710A/production/user.o
+                  0x00030c          0x6 build/C30_dsPIC33FJ256GP710A/debug/user.o
  __c30_signature
                   0x000312          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(AckI2C1.o)
  __c30_signature
@@ -1789,32 +1844,32 @@ __c30_signature
                   0x000384          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
 
 .config_GCP       0x0157fa          0x2
- .config_GCP      0x0157fa          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+ .config_GCP      0x0157fa          0x2 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
 
 .config_IESO      0x0157f8          0x2
- .config_IESO     0x0157f8          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+ .config_IESO     0x0157f8          0x2 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
 
 .config_FCKSM     0x0157f6          0x2
- .config_FCKSM    0x0157f6          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+ .config_FCKSM    0x0157f6          0x2 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
 
 .config_FWDTEN    0x0157f4          0x2
  .config_FWDTEN
-                  0x0157f4          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+                  0x0157f4          0x2 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
 
 .config_WDTWIN    0x0157f2          0x2
  .config_WDTWIN
-                  0x0157f2          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+                  0x0157f2          0x2 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
 
 .config_JTAGEN    0x0157f0          0x2
  .config_JTAGEN
-                  0x0157f0          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+                  0x0157f0          0x2 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
 
 .const              0x8580         0x50 load address 0x000580  
- .const             0x8580         0x40 build/C30_dsPIC33FJ256GP710A/production/user.o
- .const             0x85c0         0x10 build/C30_dsPIC33FJ256GP710A/production/main.o
+ .const             0x8580         0x40 build/C30_dsPIC33FJ256GP710A/debug/user.o
+ .const             0x85c0         0x10 build/C30_dsPIC33FJ256GP710A/debug/main.o
 
 .text             0x0005d0        0x6e6
- .text            0x0005d0        0x6e6 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .text            0x0005d0        0x6e6 build/C30_dsPIC33FJ256GP710A/debug/user.o
                   0x0005d0                  _InitApp
                   0x0005ea                  _InitIO
                   0x0005fe                  _MapPins
@@ -1836,9 +1891,9 @@ __c30_signature
                   0x000cb6                  ___delay32
 
 .text             0x000cd2         0x20
- .text            0x000cd2         0x12 build/C30_dsPIC33FJ256GP710A/production/main.o
+ .text            0x000cd2         0x12 build/C30_dsPIC33FJ256GP710A/debug/main.o
                   0x000cd2                  _main
- .text            0x000ce4          0xe build/C30_dsPIC33FJ256GP710A/production/system.o
+ .text            0x000ce4          0xe build/C30_dsPIC33FJ256GP710A/debug/system.o
                   0x000ce4                  _ConfigureOscillator
 
 .dinit            0x000cf2          0x2
