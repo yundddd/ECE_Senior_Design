@@ -18,11 +18,6 @@ void initUART1(void);
 void intiI2C1(void);
 void print_line_uart1(char* message, int len);
 void print_uart1(char* message, int len);
-
-void I2C1_write_byte(char data, int device, int reg);
-char I2C1_read_byte(int device, int reg);
-void I2C1_read_bytes(unsigned char* buff, int num, int device, int reg);
-void getAccGyro(unsigned char* buff);
-void getMag(unsigned char* buff);
-void initMPU9150(void);
-void translateMeasurements(unsigned char *buffer, int *output);
+void test_mpu9150(void);
+long floatToLong(float *num);
+void send_to_PC(float *measurements);

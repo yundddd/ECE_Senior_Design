@@ -4,18 +4,18 @@
 
 /* Device header file */
 #if defined(__XC16__)
-    #include <xc.h>
+#include <xc.h>
 #elif defined(__C30__)
-    #if defined(__dsPIC33E__)
-    	#include <p33Exxxx.h>
-    #elif defined(__dsPIC33F__)
-    	#include <p33Fxxxx.h>
-    #endif
+#if defined(__dsPIC33E__)
+#include <p33Exxxx.h>
+#elif defined(__dsPIC33F__)
+#include <p33Fxxxx.h>
+#endif
 #endif
 
 #include <stdint.h>        /* Includes uint16_t definition   */
 #include <stdbool.h>       /* Includes true/false definition */
-
+#include "interrupts.h"
 /******************************************************************************/
 /* Interrupt Vector Options                                                   */
 /******************************************************************************/
@@ -122,5 +122,15 @@
 /******************************************************************************/
 /* Interrupt Routines                                                         */
 /******************************************************************************/
+volatile unsigned int samplingFlag = 0;
 
 /* TODO Add interrupt routine code here. */
+void __attribute__((__interrupt__, no_auto_psv)) _U1RXInterrupt(void) {
+    unsigned char temp = U1RXREG; //read the byte
+    // U1TXREG = temp; // Transmit one character back
+    // LATBbits.LATB15 = ~LATBbits.LATB15;
+    if (temp == 0x31) {
+        samplingFlag = 1;
+    }
+    IFS0bits.U1RXIF = 0; // Clear RX Interrupt flag
+}

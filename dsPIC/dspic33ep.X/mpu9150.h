@@ -285,8 +285,8 @@ extern "C" {
 #define MPU9150_INTERRUPT_DMP_INT_BIT       1
 #define MPU9150_INTERRUPT_DATA_RDY_BIT      0
 
-// TODO: figure out what these actually do
-// UMPL source code is not very obivous
+    // TODO: figure out what these actually do
+    // UMPL source code is not very obivous
 #define MPU9150_DMPINT_5_BIT            5
 #define MPU9150_DMPINT_4_BIT            4
 #define MPU9150_DMPINT_3_BIT            3
@@ -374,6 +374,28 @@ extern "C" {
 #define MPU9150_DMP_MEMORY_BANKS        8
 #define MPU9150_DMP_MEMORY_BANK_SIZE    256
 #define MPU9150_DMP_MEMORY_CHUNK_SIZE   16
+#define writeAddr(addr) ( (addr << 1) & 0xFE)
+#define readAddr(addr) ( (addr << 1) | 0x01)
+
+
+
+
+   
+    void I2C1_write_byte(char data, int device, int reg);
+    char I2C1_read_byte(int device, int reg);
+    void I2C1_read_bytes(unsigned char* buff, int num, int device, int reg);
+    void getAccGyro(unsigned char* buff);
+    void getMag(unsigned char* buff);
+    int initMPU9150(void);
+    void translateMeasurements(unsigned char *buffer, float *output);
+
+    void get9dof(float *output);
+    
+
+
+
+
+
 
 #ifdef	__cplusplus
 }

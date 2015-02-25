@@ -18,8 +18,7 @@
 #include "user.h"            /* variables/params used by user.c               */
 #include <i2c.h>
 #include "mpu9150.h"
-#define writeAddr(addr) ( (addr << 1) & 0xFE)
-#define readAddr(addr) ( (addr << 1) | 0x01)
+
 #define SYS_FREQ        140000000L
 #define FCY             SYS_FREQ/2
 #define I2C_BRG(freq) (FCY/freq-FCY/1111111)-1
@@ -39,7 +38,12 @@ void InitApp(void) {
     __delay_ms(1000);
     LATBbits.LATB6 = 0;
     intiI2C1();
-    initMPU9150();
+    if (initMPU9150()) {
+        print_line_uart1("device initalized", 17);
+    } else {
+        print_line_uart1("device has returned an unknown ID", 33);
+    }
+    test_mpu9150();
 }
 
 void InitIO(void) {
@@ -149,82 +153,6 @@ void intiI2C1(void) {
 
 }
 
-void initMPU9150() {
-    unsigned char buffer[18];
-    I2C1_write_byte(MPU9150_CLOCK_PLL_XGYRO & 0x07, MPU9150_DEFAULT_ADDRESS, MPU9150_RA_PWR_MGMT_1); //set gyro as clock reference
-    I2C1_write_byte(MPU9150_GYRO_FS_500 << 3, MPU9150_DEFAULT_ADDRESS, MPU9150_RA_GYRO_CONFIG); //set gyro range 500dps
-    I2C1_write_byte(MPU9150_ACCEL_FS_2 << 3, MPU9150_DEFAULT_ADDRESS, MPU9150_RA_ACCEL_CONFIG); //set acc range 2g
-    if (0x68 == I2C1_read_byte(MPU9150_DEFAULT_ADDRESS, MPU9150_RA_WHO_AM_I)) {//check ID
-        print_line_uart1("device initalized", 17);
-    } else {
-        print_line_uart1("device has returned an unknown ID", 33);
-    }
-
-
-    getAccGyro(buffer);
-    getMag(buffer + 12);
-
-    print_uart1((char *) &buffer[0], 1);
-    print_line_uart1((char *) &buffer[1], 1);
-    print_uart1((char *) &buffer[2], 1);
-    print_line_uart1((char *) &buffer[3], 1);
-    print_uart1((char *) &buffer[4], 1);
-    print_line_uart1((char *) &buffer[5], 1);
-
-    print_uart1((char *) &buffer[6], 1);
-    print_line_uart1((char *) &buffer[7], 1);
-    print_uart1((char *) &buffer[8], 1);
-    print_line_uart1((char *) &buffer[9], 1);
-    print_uart1((char *) &buffer[10], 1);
-    print_line_uart1((char *) &buffer[11], 1);
-
-    print_uart1((char *) &buffer[12], 1);
-    print_line_uart1((char *) &buffer[13], 1);
-    print_uart1((char *) &buffer[14], 1);
-    print_line_uart1((char *) &buffer[15], 1);
-    print_uart1((char *) &buffer[16], 1);
-    print_line_uart1((char *) &buffer[17], 1);
-
-
-    print_line_uart1("Translated:", 11);
-
-
-    int translated[9];
-    translateMeasurements(buffer, translated);
-    int gx = *translated;
-    int gy = *(translated + 1);
-    int gz = *(translated + 2);
-    long GZ = gx / 16.384;
-    char temp = (GZ >> 24)&0xFF;
-    print_uart1(&temp, 1);
-    temp = (GZ >> 16)&0xFF;
-    print_uart1(&temp, 1);
-    temp = (GZ >> 8)&0xFF;
-    print_uart1(&temp, 1);
-    temp = GZ & 0xFF;
-    print_uart1(&temp, 1);
-    GZ = gy / 16.384;
-    temp = (GZ >> 24)&0xFF;
-    print_uart1(&temp, 1);
-    temp = (GZ >> 16)&0xFF;
-    print_uart1(&temp, 1);
-    temp = (GZ >> 8)&0xFF;
-    print_uart1(&temp, 1);
-    temp = GZ & 0xFF;
-    print_uart1(&temp, 1);
-    GZ = gz / 16.384;
-    temp = (GZ >> 24)&0xFF;
-    print_uart1(&temp, 1);
-    temp = (GZ >> 16)&0xFF;
-    print_uart1(&temp, 1);
-    temp = (GZ >> 8)&0xFF;
-    print_uart1(&temp, 1);
-    temp = GZ & 0xFF;
-    print_uart1(&temp, 1);
-
-    while (1);
-}
-
 void print_line_uart1(char* message, int len) {
     int i;
     for (i = 0; i < len; i++) {
@@ -251,120 +179,88 @@ void print_uart1(char* message, int len) {
 
 }
 
-void I2C1_write_byte(char data, int device, int reg) {
-    IdleI2C1();
-    StartI2C1(); //S
-    /* Wait till Start sequence is completed */
-    while (I2C1CONbits.SEN);
-    // print_line_uart1("I2C started", 11);
-    MasterWriteI2C1(writeAddr(device)); //AD + W
-    while (I2C1STATbits.TBF); //wait for transmission
-    //  print_line_uart1("slave address transmitted", 25);
-    while (I2C1STATbits.ACKSTAT); //wait for ACK
-    //  print_line_uart1("ACK received", 12);
-    MasterWriteI2C1(reg); //RA
-    while (I2C1STATbits.ACKSTAT); //wait for ACK
-    //  print_line_uart1("ACK received", 12);
-    MasterWriteI2C1(data); //DATA
-
-    while (I2C1STATbits.ACKSTAT); //wait for ACK
-    //  print_line_uart1("ACK received", 12);
-
-    StopI2C1();
-}
-
-char I2C1_read_byte(int device, int reg) {
-    char data = 0;
-    IdleI2C1();
-    StartI2C1(); //S
-    while (I2C1CONbits.SEN);
-    MasterWriteI2C1(writeAddr(device)); //AD + W
-    while (I2C1STATbits.TBF); //wait for transmission
-    while (I2C1STATbits.ACKSTAT); //wait for ACK
-    MasterWriteI2C1(reg); //RA
-    while (I2C1STATbits.ACKSTAT); //wait for ACK
-    StartI2C1(); //S
-    while (I2C1CONbits.SEN);
-    MasterWriteI2C1(readAddr(device)); //AD + R
-    while (I2C1STATbits.ACKSTAT); //wait for ACK
-    data = MasterReadI2C1(); //DATA
-    NotAckI2C1(); //Master NACK
-    StopI2C1(); //STTOP
-    while (I2C1CONbits.PEN);
-    return data;
-}
-
-void I2C1_read_bytes(unsigned char* buff, int num, int device, int reg) {
+void send_to_PC(float *measurements) {
     int i;
-    IdleI2C1();
-    StartI2C1(); //S
-    while (I2C1CONbits.SEN);
-    MasterWriteI2C1(writeAddr(device)); //AD + W
-    while (I2C1STATbits.TBF); //wait for transmission
-    while (I2C1STATbits.ACKSTAT); //wait for ACK
-    MasterWriteI2C1(reg); //RA
-    while (I2C1STATbits.ACKSTAT); //wait for ACK
-
-    StartI2C1(); //S
-    while (I2C1CONbits.SEN);
-    MasterWriteI2C1(readAddr(device)); //AD + R
-    while (I2C1STATbits.ACKSTAT); //wait for ACK
-    for (i = 0; i < num - 1; i++) {
-        *(buff++) = MasterReadI2C1(); //DATA
-        IFS1bits.MI2C1IF = 0;
-        AckI2C1();
-        while (!IFS1bits.MI2C1IF); //wait for ack transmission, master event
+    unsigned char temp;
+    long templong;
+    for (i = 0; i < 9; i++) {
+        templong=floatToLong(measurements++);
+        temp = ( templong>> 24)&0xFF;
+        print_uart1((char *)&temp, 1);
+        temp = (templong >> 16)&0xFF;
+        print_uart1((char *)&temp, 1);
+        temp = (templong >> 8)&0xFF;
+        print_uart1((char *)&temp, 1);
+        temp =templong & 0xFF;
+        print_uart1((char *)&temp, 1);
     }
-    *(buff++) = MasterReadI2C1();
-    NotAckI2C1(); //Master NACK
-    StopI2C1(); //STTOP
-    while (I2C1CONbits.PEN);
-
 }
 
-void getAccGyro(unsigned char* buff) {
-    I2C1_read_bytes(buff, 12, MPU9150_DEFAULT_ADDRESS, MPU9150_RA_ACCEL_XOUT_H); //get acc and gyro first
+long floatToLong(float *num) {
+
+    return (long) (1000 * (*num));
 }
 
-void getMag(unsigned char* buff) {
-    char temp;
-    I2C1_write_byte(0x02, MPU9150_DEFAULT_ADDRESS, MPU9150_RA_INT_PIN_CFG); //set bypass mode
-    I2C1_write_byte(0x01, MPU9150_RA_MAG_ADDRESS, 0x0A); //set mag to single measurement mode
-    __delay_ms(10); //wait for mag to finish measuring
-    I2C1_read_bytes(buff, 6, MPU9150_RA_MAG_ADDRESS, MPU9150_RA_MAG_XOUT_L);
-    /*    temp = *buff;   //switching H and L bytes
-     *buff = *(buff + 1);
-     *(buff + 1) = temp;
-        temp = *(buff + 2);
-     *(buff + 2) = *(buff + 3);
-     *(buff + 3) = temp;
-        temp = *(buff + 4);
-     *(buff + 4) = *(buff + 5);
-     *(buff + 5) = temp; //swap H and L*/
-}
+void test_mpu9150() {
+    unsigned char buffer[18];
+    getAccGyro(buffer);
+    getMag(buffer + 12);
 
-/** Translate raw sensor info into integers without scaling factor
- * @param buffer, unsigned char array that holds raw sensor measurement bytes
- * @param output 16-bit signed integer that has combined sensor measurements w/o scaling facotr
- */
-void translateMeasurements(unsigned char *buffer, int *output) {//acc gryo  H-L, Mag L-H
-    *(output++) = (((unsigned int) buffer[0]) << 8) | buffer[1];
-    *(output++) = (((unsigned int) buffer[2]) << 8) | buffer[3];
-    *(output++) = (((unsigned int) buffer[4]) << 8) | buffer[5];
+    print_uart1((char *) &buffer[0], 1);
+    print_line_uart1((char *) &buffer[1], 1);
+    print_uart1((char *) &buffer[2], 1);
+    print_line_uart1((char *) &buffer[3], 1);
+    print_uart1((char *) &buffer[4], 1);
+    print_line_uart1((char *) &buffer[5], 1);
 
-    *(output++) = (((unsigned int) buffer[6]) << 8) | buffer[7];
-    *(output++) = (((unsigned int) buffer[8]) << 8) | buffer[9];
-    *(output++) = (((unsigned int) buffer[10]) << 8) | buffer[11];
+    print_uart1((char *) &buffer[6], 1);
+    print_line_uart1((char *) &buffer[7], 1);
+    print_uart1((char *) &buffer[8], 1);
+    print_line_uart1((char *) &buffer[9], 1);
+    print_uart1((char *) &buffer[10], 1);
+    print_line_uart1((char *) &buffer[11], 1);
 
-    *(output++) = (((unsigned int) buffer[13]) << 8) | buffer[12];
-    *(output++) = (((unsigned int) buffer[15]) << 8) | buffer[14];
-    *(output) = (((unsigned int) buffer[17]) << 8) | buffer[16];
-}
+    print_uart1((char *) &buffer[12], 1);
+    print_line_uart1((char *) &buffer[13], 1);
+    print_uart1((char *) &buffer[14], 1);
+    print_line_uart1((char *) &buffer[15], 1);
+    print_uart1((char *) &buffer[16], 1);
+    print_line_uart1((char *) &buffer[17], 1);
 
-/** Scales gyro measurements with a scaling factor defined in initMPU9150().
- * @param buffer, unsigned char array that holds raw sensor measurement bytes
- * @param output, float which is in radians/sec. They will be passed to a sensor fusion filter.
- */
-void scaleGyro(int *buff,float *output){
 
+    /* print_line_uart1("Translated:", 11);
+
+
+     float translated[9];
+     translateMeasurements(buffer, translated);
+     int gx = *translated;
+     int gy = *(translated + 1);
+     int gz = *(translated + 2);
+     long GZ = gx / 16.384;
+     char temp = (GZ >> 24)&0xFF;
+     print_uart1(&temp, 1);
+     temp = (GZ >> 16)&0xFF;
+     print_uart1(&temp, 1);
+     temp = (GZ >> 8)&0xFF;
+     print_uart1(&temp, 1);
+     temp = GZ & 0xFF;
+     print_uart1(&temp, 1);
+     GZ = gy / 16.384;
+     temp = (GZ >> 24)&0xFF;
+     print_uart1(&temp, 1);
+     temp = (GZ >> 16)&0xFF;
+     print_uart1(&temp, 1);
+     temp = (GZ >> 8)&0xFF;
+     print_uart1(&temp, 1);
+     temp = GZ & 0xFF;
+     print_uart1(&temp, 1);
+     GZ = gz / 16.384;
+     temp = (GZ >> 24)&0xFF;
+     print_uart1(&temp, 1);
+     temp = (GZ >> 16)&0xFF;
+     print_uart1(&temp, 1);
+     temp = (GZ >> 8)&0xFF;
+     print_uart1(&temp, 1);
+     temp = GZ & 0xFF;
+     print_uart1(&temp, 1);*/
 }

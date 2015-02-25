@@ -1,0 +1,58 @@
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe.config
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe.manifest
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.application
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.pdb
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\ZedGraph.dll
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI_for_new_lazer_accelerameter_encoder.Form1.resources
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI_for_new_lazer_accelerameter_encoder.Properties.Resources.resources
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.csproj.GenerateResource.Cache
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.exe.manifest
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.application
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.exe
+C:\Users\tic27\Documents\GitHub\6DOF\PathMeT\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.pdb
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe.config
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.exe
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.pdb
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe.manifest
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.application
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.pdb
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\ZedGraph.dll
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.csprojResolveAssemblyReference.cache
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI_for_new_lazer_accelerameter_encoder.Form1.resources
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI_for_new_lazer_accelerameter_encoder.Properties.Resources.resources
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.csproj.GenerateResource.Cache
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.exe.manifest
+C:\Users\tic27\Desktop\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.application
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe.config
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.exe
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.pdb
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe.manifest
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.application
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.pdb
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\ZedGraph.dll
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.csprojResolveAssemblyReference.cache
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI_for_new_lazer_accelerameter_encoder.Form1.resources
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI_for_new_lazer_accelerameter_encoder.Properties.Resources.resources
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.csproj.GenerateResource.Cache
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.exe.manifest
+C:\Users\Tim\Desktop\github\PathMeT\9dof\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.application
+D:\github\9dof_IMU\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe.config
+D:\github\9dof_IMU\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.exe
+D:\github\9dof_IMU\_9dof_serial_bytes\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.pdb
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe.config
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.exe
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.pdb
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe.manifest
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.application
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.exe
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\GUI for new lazer accelerameter encoder.pdb
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\bin\Debug\ZedGraph.dll
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.csprojResolveAssemblyReference.cache
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI_for_new_lazer_accelerameter_encoder.Form1.resources
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI_for_new_lazer_accelerameter_encoder.Properties.Resources.resources
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.csproj.GenerateResource.Cache
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.exe.manifest
+D:\github\ECE_Senior_Design\GUI for new lazer accelerameter encoder\GUI for new lazer accelerameter encoder\obj\Debug\GUI for new lazer accelerameter encoder.application
