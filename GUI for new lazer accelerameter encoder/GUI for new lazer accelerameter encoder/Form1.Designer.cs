@@ -86,6 +86,7 @@
             this.labelAccPErr = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.labelQ = new System.Windows.Forms.Label();
+            this.button_calibrate_gyro = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -163,7 +164,7 @@
             // 
             // buttonSaveEncoderData
             // 
-            this.buttonSaveEncoderData.Location = new System.Drawing.Point(461, 79);
+            this.buttonSaveEncoderData.Location = new System.Drawing.Point(505, 63);
             this.buttonSaveEncoderData.Name = "buttonSaveEncoderData";
             this.buttonSaveEncoderData.Size = new System.Drawing.Size(114, 46);
             this.buttonSaveEncoderData.TabIndex = 23;
@@ -648,12 +649,23 @@
             this.labelQ.TabIndex = 75;
             this.labelQ.Text = "..";
             // 
+            // button_calibrate_gyro
+            // 
+            this.button_calibrate_gyro.Location = new System.Drawing.Point(360, 63);
+            this.button_calibrate_gyro.Name = "button_calibrate_gyro";
+            this.button_calibrate_gyro.Size = new System.Drawing.Size(111, 46);
+            this.button_calibrate_gyro.TabIndex = 76;
+            this.button_calibrate_gyro.Text = "Calibrate Gyro";
+            this.button_calibrate_gyro.UseVisualStyleBackColor = true;
+            this.button_calibrate_gyro.Click += new System.EventHandler(this.button_calibrate_gyro_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1589, 882);
+            this.Controls.Add(this.button_calibrate_gyro);
             this.Controls.Add(this.labelQ);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.labelGyroRErr);
@@ -777,6 +789,7 @@
         private System.Windows.Forms.Label labelQ;
         private System.Windows.Forms.TabPage tabPage3;
         private ZedGraph.ZedGraphControl zedGraphControlCompass;
+        private System.Windows.Forms.Button button_calibrate_gyro;
     }
 }
 

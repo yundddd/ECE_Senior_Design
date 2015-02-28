@@ -123,6 +123,7 @@
 /* Interrupt Routines                                                         */
 /******************************************************************************/
 volatile unsigned int samplingFlag = 0;
+volatile unsigned int calibrate_gyro_flag = 0;
 
 /* TODO Add interrupt routine code here. */
 void __attribute__((__interrupt__, no_auto_psv)) _U1RXInterrupt(void) {
@@ -131,6 +132,8 @@ void __attribute__((__interrupt__, no_auto_psv)) _U1RXInterrupt(void) {
     // LATBbits.LATB15 = ~LATBbits.LATB15;
     if (temp == 0x31) {
         samplingFlag = 1;
+    } else if (temp == 0x33) {
+        calibrate_gyro_flag = 1;
     }
     IFS0bits.U1RXIF = 0; // Clear RX Interrupt flag
 }

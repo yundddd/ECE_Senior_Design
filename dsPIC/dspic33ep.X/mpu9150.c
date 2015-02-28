@@ -5,6 +5,9 @@
 #include <libpic30.h>
 #include <i2c.h>
 unsigned char buff[20]; //buffer to hold raw bytes
+int offset_acc[3]={-327,163,0};
+int offset_gyro[3] = {0x00};
+int offset_mag[3]={0,2,0};
 
 /** write a byte to I2C1 bus
  * @param char data
@@ -163,6 +166,16 @@ void translateMeasurements(unsigned char *buffer, float *output) {//acc gryo  H-
     unscaled[8] = (((unsigned int) buffer[19]) << 8) | buffer[18];
 
 
+    unscaled[0] += offset_acc[0];//applying offset for acc
+    unscaled[1] += offset_acc[1];
+    unscaled[2] += offset_acc[2];
+
+    unscaled[3] += offset_gyro[0];//applying offset for gyro
+    unscaled[4] += offset_gyro[1];
+    unscaled[5] += offset_gyro[2];
+
+
+
     *(output++) = unscaled[0] / 16384.0; //gx
     *(output++) = unscaled[1] / 16384.0; //gy
     *(output++) = unscaled[2] / 16384.0; //gz
@@ -174,4 +187,22 @@ void translateMeasurements(unsigned char *buffer, float *output) {//acc gryo  H-
     *(output++) = unscaled[8] *0.3; //mz
 }
 
+void calibrateGyro(void) {
+    unsigned char buffer[14]; //only need gyro at buffer+8
+    int i;
+    int gyro[3]={0x00};
+    for (i = 0; i < 10; i++) {//possibility of overflowing is very low
+        __delay_ms(100);
+        getAccGyro(buffer);
+        gyro[0] += (((unsigned int) buffer[8]) << 8) | buffer[9];
+        gyro[1] += (((unsigned int) buffer[10]) << 8) | buffer[11];
+        gyro[2] += (((unsigned int) buffer[12]) << 8) | buffer[13];
+    }
+    gyro[0] /= 10; //averaging
+    gyro[1] /= 10;
+    gyro[2] /= 10;
 
+    offset_gyro[0] = 0 - gyro[0];
+    offset_gyro[1] = 0 - gyro[1];
+    offset_gyro[2] = 0 - gyro[2];
+}

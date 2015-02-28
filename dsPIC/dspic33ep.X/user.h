@@ -20,4 +20,5 @@ void print_line_uart1(char* message, int len);
 void print_uart1(char* message, int len);
 void test_mpu9150(void);
 long floatToLong(float *num);
-void send_to_PC(float *measurements);
+void send_9dof_to_PC(float *measurements);
+void print_string(char* message);

@@ -13,8 +13,9 @@ extern "C" {
 #endif
 
 
-//controls
-extern volatile unsigned int samplingFlag;
+    //controls
+    extern volatile unsigned int samplingFlag;
+    extern volatile unsigned int calibrate_gyro_flag;
 
 #ifdef	__cplusplus
 }

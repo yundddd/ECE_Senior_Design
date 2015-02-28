@@ -156,15 +156,17 @@ void intiI2C1(void) {
 void print_line_uart1(char* message, int len) {
     int i;
     for (i = 0; i < len; i++) {
-
+        if (*message == 0x00) {//breaks on null
+            break;
+        }
         U1TXREG = *message;
         message++;
-        __delay_ms(1);
+        while (U1STAbits.UTXBF); //wait until stop bit
     }
     U1TXREG = 0x0D;
-    __delay_ms(1);
+    while (U1STAbits.UTXBF); //wait until stop bit
     U1TXREG = 0x0A;
-    __delay_ms(1);
+
 }
 
 void print_uart1(char* message, int len) {
@@ -173,26 +175,35 @@ void print_uart1(char* message, int len) {
 
         U1TXREG = *message;
         message++;
-        __delay_ms(1);
+        while (U1STAbits.UTXBF); //wait until stop bit
     }
 
 
 }
 
-void send_to_PC(float *measurements) {
+void print_string(char* message) {//print until null
+    while (*message) {
+        U1TXREG = *(message++);
+       // U1TXREG=0x31;
+
+        while (U1STAbits.UTXBF); //wait until stop bit
+    }
+}
+
+void send_9dof_to_PC(float *measurements) {
     int i;
     unsigned char temp;
     long templong;
     for (i = 0; i < 9; i++) {
-        templong=floatToLong(measurements++);
-        temp = ( templong>> 24)&0xFF;
-        print_uart1((char *)&temp, 1);
+        templong = floatToLong(measurements++);
+        temp = (templong >> 24)&0xFF;
+        print_uart1((char *) &temp, 1);
         temp = (templong >> 16)&0xFF;
-        print_uart1((char *)&temp, 1);
+        print_uart1((char *) &temp, 1);
         temp = (templong >> 8)&0xFF;
-        print_uart1((char *)&temp, 1);
-        temp =templong & 0xFF;
-        print_uart1((char *)&temp, 1);
+        print_uart1((char *) &temp, 1);
+        temp = templong & 0xFF;
+        print_uart1((char *) &temp, 1);
     }
 }
 
@@ -201,7 +212,7 @@ long floatToLong(float *num) {
     return (long) (1000 * (*num));
 }
 
-void test_mpu9150() {
+void test_mpu9150(void) {
     unsigned char buffer[18];
     getAccGyro(buffer);
     getMag(buffer + 12);

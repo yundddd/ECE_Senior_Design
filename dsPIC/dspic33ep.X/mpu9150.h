@@ -380,7 +380,7 @@ extern "C" {
 
 
 
-   
+
     void I2C1_write_byte(char data, int device, int reg);
     char I2C1_read_byte(int device, int reg);
     void I2C1_read_bytes(unsigned char* buff, int num, int device, int reg);
@@ -390,7 +390,7 @@ extern "C" {
     void translateMeasurements(unsigned char *buffer, float *output);
 
     void get9dof(float *output);
-    
+    void calibrateGyro(void);
 
 
 

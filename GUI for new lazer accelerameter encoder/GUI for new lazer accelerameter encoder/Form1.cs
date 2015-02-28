@@ -94,6 +94,7 @@ namespace GUI_for_new_lazer_accelerameter_encoder
         MadgwickAHRS madgwickAHRS;
 
         byte[] askForOneMeasurementCommand = { 0x31 };
+        byte[] Calibrate_gyro_Command = { 0x33 };
         byte[] stopStreamCommand = { 0x38 };
 
 
@@ -785,6 +786,12 @@ namespace GUI_for_new_lazer_accelerameter_encoder
             Qvalue = trackBarQ.Value / 1000.0;
             labelQ.Text = Qvalue.ToString();
             //setQ(Qvalue);
+        }
+
+        private void button_calibrate_gyro_Click(object sender, EventArgs e)
+        {
+
+            serialPort.Write(Calibrate_gyro_Command, 0, 1);//initiate communication
         }
 
 
