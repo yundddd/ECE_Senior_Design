@@ -391,7 +391,7 @@ extern "C" {
 
     void get9dof(float *output);
     void calibrateGyro(void);
-
+    void transformation(float *uncalibrated_values);
 
 
 

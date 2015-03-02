@@ -57,34 +57,42 @@ int16_t main(void) {
 
 
     print_line_uart1("dsPIC is ready", 14);
+    /*
+        while (1) {
+            get9dof(measurements);
+            transformation(&measurements[6]);   //for magview
+            sprintf(magStringX, "%d", (int) (measurements[6]*100));
+            sprintf(magStringY, "%d", (int) (measurements[7]*100));
+            sprintf(magStringZ, "%d", (int) (measurements[8]*100));
 
-    while (1) {
-        get9dof(measurements);
-        sprintf(magStringX, "%d", (int) (measurements[6]*100));
-        sprintf(magStringY, "%d", (int) (measurements[7]*100));
-        sprintf(magStringZ, "%d", (int) (measurements[8]*100));
-
- //********************for mag viewer:
-        print_uart1(&MAG, 1);
-        print_string(magStringX);
-        print_string(" ");
-        print_string(magStringY);
-        print_string(" ");
-        print_string(magStringZ);
-        print_string(" ");
-        print_uart1(&CR, 1);
-        print_uart1(&LF, 1);
-        __delay_ms(100);
- //**********************************************
-    }
-
+       //for mag master
+            //   sprintf(magStringX, "%.3f", (measurements[6]));
+            //   sprintf(magStringY, "%.3f", (measurements[7]));
+            //  sprintf(magStringZ, "%.3f", (measurements[8]));
+            //********************for mag viewer:
+            print_uart1(&MAG, 1);
+            print_string(magStringX);
+            print_string(" ");
+            print_string(magStringY);
+            print_string(" ");
+            print_string(magStringZ);
+            print_string(" ");
+            print_uart1(&CR, 1);
+            print_uart1(&LF, 1);
+            __delay_ms(100);
+            //**********************************************
+        }
+     */
 
     while (1) {
         //  LATBbits.LATB6 = ~LATBbits.LATB6;
         if (samplingFlag) {
+            LATBbits.LATB6 = 1;
             get9dof(measurements);
+            transformation(&measurements[6]);
             send_9dof_to_PC(measurements);
             samplingFlag = 0;
+            LATBbits.LATB6 = 0;
         } else if (calibrate_gyro_flag) {
             calibrate_gyro_flag = 0;
             LATBbits.LATB6 = 1;

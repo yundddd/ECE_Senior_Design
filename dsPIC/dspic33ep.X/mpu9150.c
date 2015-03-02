@@ -4,10 +4,27 @@
 #define FCY             SYS_FREQ/2
 #include <libpic30.h>
 #include <i2c.h>
+#include <math.h>
+
+#define M11 1.023
+#define M12 -0.056
+#define M13 0.017
+#define M21 0.092
+#define M22 1.039
+#define M23 0.002
+#define M31 0.004
+#define M32 0.011
+#define M33 1.05
+#define Bx 3.017
+#define By 6.355
+#define Bz 11.868
+float calibrated_values[3];
+
+
 unsigned char buff[20]; //buffer to hold raw bytes
-int offset_acc[3]={-327,163,0};
+int offset_acc[3] = {-327, 163, 0};
 int offset_gyro[3] = {0x00};
-int offset_mag[3]={0,2,0};
+int offset_mag[3] = {0, 2, 0};
 
 /** write a byte to I2C1 bus
  * @param char data
@@ -166,11 +183,11 @@ void translateMeasurements(unsigned char *buffer, float *output) {//acc gryo  H-
     unscaled[8] = (((unsigned int) buffer[19]) << 8) | buffer[18];
 
 
-    unscaled[0] += offset_acc[0];//applying offset for acc
+    unscaled[0] += offset_acc[0]; //applying offset for acc
     unscaled[1] += offset_acc[1];
     unscaled[2] += offset_acc[2];
 
-    unscaled[3] += offset_gyro[0];//applying offset for gyro
+    unscaled[3] += offset_gyro[0]; //applying offset for gyro
     unscaled[4] += offset_gyro[1];
     unscaled[5] += offset_gyro[2];
 
@@ -179,18 +196,18 @@ void translateMeasurements(unsigned char *buffer, float *output) {//acc gryo  H-
     *(output++) = unscaled[0] / 16384.0; //gx
     *(output++) = unscaled[1] / 16384.0; //gy
     *(output++) = unscaled[2] / 16384.0; //gz
-    *(output++) = unscaled[3] / 65.5; //grx
-    *(output++) = unscaled[4] / 65.5; //gry
-    *(output++) = unscaled[5] / 65.5; //grz
-    *(output++) = unscaled[6] *0.3; //mx
-    *(output++) = unscaled[7] *0.3; //my
-    *(output++) = unscaled[8] *0.3; //mz
+    *(output++) = unscaled[3] * 2.66E-4; //grx rad/s    1/scale * pi / 180
+    *(output++) = unscaled[4] * 2.66E-4; //gry
+    *(output++) = unscaled[5] * 2.66E-4; //grz
+    *(output++) = unscaled[7] *0.3; //mx //x y are swapped and z reversed because the board layout
+    *(output++) = unscaled[6] *0.3; //my
+    *(output++) = -unscaled[8] *0.3; //mz
 }
 
 void calibrateGyro(void) {
     unsigned char buffer[14]; //only need gyro at buffer+8
     int i;
-    int gyro[3]={0x00};
+    int gyro[3] = {0x00};
     for (i = 0; i < 10; i++) {//possibility of overflowing is very low
         __delay_ms(100);
         getAccGyro(buffer);
@@ -205,4 +222,30 @@ void calibrateGyro(void) {
     offset_gyro[0] = 0 - gyro[0];
     offset_gyro[1] = 0 - gyro[1];
     offset_gyro[2] = 0 - gyro[2];
+}
+
+void transformation(float *uncalibrated_values) {
+    //calibration_matrix[3][3] is the transformation matrix
+    //replace M11, M12,..,M33 with your transformation matrix data
+    double calibration_matrix[3][3] = {
+        {M11, M12, M13},
+        {M21, M22, M23},
+        {M31, M32, M33}
+    };
+    //bias[3] is the bias
+    //replace Bx, By, Bz with your bias data
+    double bias[3] = {
+        Bx,
+        By,
+        Bz
+    };
+    int i, j;
+    float result[3] = {0, 0, 0};
+    //calculation
+    for (i = 0; i < 3; ++i) uncalibrated_values[i] = uncalibrated_values[i] - bias[i];
+
+    for (i = 0; i < 3; ++i)
+        for (j = 0; j < 3; ++j)
+            result[i] += calibration_matrix[i][j] * uncalibrated_values[j];
+    for (i = 0; i < 3; ++i) uncalibrated_values[i] = result[i];
 }

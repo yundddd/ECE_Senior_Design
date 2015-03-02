@@ -835,6 +835,7 @@ namespace GUI_for_new_lazer_accelerameter_encoder
 
             _serialPort.DataReceived += SerialPortDataReceived;
             madgwickAHRS = m;
+            
             PitchLog = s;
         }
         private void SerialPortDataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -905,9 +906,9 @@ namespace GUI_for_new_lazer_accelerameter_encoder
 
             // yaw = 0;
 //
-   //         madgwickAHRS.Update((float)(gx * Math.PI / 180), (float)(gy * Math.PI / 180), (float)(gz * Math.PI / 180), (float)ax, (float)ay, (float)az, (float)mx, (float)my, (float)mz);
-   //         madgwickAHRS.SamplePeriod = bytes[18]/1000f;
-         //   madgwickAHRS.Update((float)(gx * Math.PI / 180), (float)(gy * Math.PI / 180), (float)(gz * Math.PI / 180), (float)ax, (float)ay, (float)az);
+      //  madgwickAHRS.Update((float)(gx ), (float)(gy), (float)(gz), (float)ax, (float)ay, (float)az, (float)mx, (float)my, (float)mz);
+        madgwickAHRS.SamplePeriod = 0.05f;
+         madgwickAHRS.Update((float)(gx), (float)(gy), (float)(gz ), (float)ax, (float)ay, (float)az);
      //       aform.kalmanUpdate(ax, ay, az, gx, gy);
      //       i++;
 

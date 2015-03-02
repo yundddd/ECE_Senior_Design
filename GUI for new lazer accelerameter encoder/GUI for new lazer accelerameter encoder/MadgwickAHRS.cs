@@ -157,19 +157,18 @@ namespace GUI_for_new_lazer_accelerameter_encoder
 
 
                 Beta = 0.041f;
-                double sigmaAcc=Math.Sqrt(ax*ax+ay*ay+az*az);
-                if (sigmaAcc >= 1.15 || sigmaAcc<=0.85)
-                {
-                    Beta = 0.0001f;
-                }
+           //     double sigmaAcc=Math.Sqrt(ax*ax+ay*ay+az*az);
+           //     if (sigmaAcc >= 1.15 || sigmaAcc<=0.85)
+            //    {
+            //        Beta = 0.0001f;
+             //   }
 
 
 
 
 
                 //Console.WriteLine("dt"+sigmaAcc * 0.005);
-
-            }
+  }
             else
             {
                 Beta = 15f;
