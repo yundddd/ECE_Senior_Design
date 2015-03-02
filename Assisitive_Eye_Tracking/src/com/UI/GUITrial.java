@@ -14,6 +14,7 @@ import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.Dimension;
 import java.awt.LayoutManager;
+import java.awt.Point;
 
 import java.lang.String;
 import java.awt.event.ActionEvent;
@@ -23,12 +24,13 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import com.camera.EyeEventNotifier;
-public class GUITrial implements ActionListener, MouseMotionListener {
+public class GUITrial implements ActionListener, MouseMotionListener, Runnable {
 	
 	private JFrame letterFrame;
 	private JFrame posFrame;
 	private LayoutManager layout;
 	private LayoutManager posLayout;
+	private JTextArea posUpdate;
 	// CONSTANTS
 	private static final int MIN_X_RESOLUTION = 640;
 	private static final int MIN_Y_RESOLUTION = 480;
@@ -42,16 +44,7 @@ public class GUITrial implements ActionListener, MouseMotionListener {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GUITrial window = new GUITrial();
-					window.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		EventQueue.invokeLater(new GUITrial());
 	}
 
 	/**
@@ -83,14 +76,15 @@ public class GUITrial implements ActionListener, MouseMotionListener {
 		posLayout = new GridLayout(2, 1);
 		posFrame.setLayout(posLayout);
 				
-		JTextArea eyePos = new JTextArea();
-		posFrame.add(eyePos);
+		posUpdate = new JTextArea();
+		System.out.println(posUpdate);
+		posFrame.add(posUpdate);
 				
 		JButton calibrateButton = new JButton("Calibrate");
 		calibrateButton.addActionListener(this);
 		posFrame.add(calibrateButton);
 				
-		overlay = new mouseOverlay(letterFrame,eyePos);
+		overlay = new mouseOverlay(letterFrame,posUpdate);
 		
 		JLabel label = new JLabel("");
 		letterFrame.getContentPane().add(label);
@@ -140,7 +134,25 @@ public class GUITrial implements ActionListener, MouseMotionListener {
 		posFrame.setVisible(state);
 		overlay.setVisible(state);
 	}
+	
+	public JFrame getPosFrame()
+	{
+		/* Get JFrame which contains the Calibrate button and Eye pos corrdinates. */
+		return posFrame;
+	}
 
+	public JTextArea getPosUpdateArea()
+	{
+		/* Get the JTextArea to write Mouse Coordinates to. */
+		System.out.println(posUpdate);
+		return posUpdate;
+	}
+	
+	public void posUpdate(Point posEye)
+	{
+		posUpdate.setText("Eye X: ".concat(Integer.toString(posEye.x).concat("\nEye Y: ").concat(Integer.toString(posEye.y))).concat("\n"));
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
@@ -160,6 +172,17 @@ public class GUITrial implements ActionListener, MouseMotionListener {
 	public void mouseDragged(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		try {
+			GUITrial window = new GUITrial();
+			window.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

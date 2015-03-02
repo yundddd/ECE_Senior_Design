@@ -12,8 +12,11 @@ public class EyeEventNotifier
 		this.listener = listener;
 	}
 	
-	public void mousePosUpdate(Point newPos)
+	public void mousePosUpdate(double x, double y)
 	{
+		Point newPos = new Point();
+		newPos.x = (int) x;
+		newPos.y = (int) y;
 		if (!newPos.equals(eyePos))
 		{
 			// Eye Position has moved, inform functions

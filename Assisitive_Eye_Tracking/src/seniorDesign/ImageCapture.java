@@ -17,13 +17,17 @@ import org.opencv.core.Size;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
 import org.opencv.imgproc.Imgproc;
- 
 
-class Panel extends JPanel
+
+import org.opencv.imgproc.Moments;
+import com.camera.EyeEventNotifier;
+
+class VPanel extends JPanel
 {
 	private BufferedImage image;
 	
-	public Panel()
+	public VPanel()
+
 	{
 		super();
 	}
@@ -51,11 +55,18 @@ public class ImageCapture
 	private static BufferedImage testImage; 
 	private static BufferedImage filteredImage; 
 	private static BufferedImage newFilteredImage;
+
 	
 	JFrame frame1 =  new JFrame("WebCame Capture");
 	JFrame frame2 = new JFrame("Thresholded");
 	Panel panel1 = new Panel();
 	Panel panel2 = new Panel();
+
+	private EyeEventNotifier notifier;
+	
+	private static final int MAXIMUM_OBJECT_MASK_SIZE = 6;
+	private static final int GAUSSIAN_KERNEL_SIZE = 3;
+	private static final int THRESHOLDING_VALUE = 180;
 	
 	VideoCapture vc; 
 	
@@ -63,8 +74,11 @@ public class ImageCapture
 	Mat webcamImage;
 	Mat hsv_image;
 	Mat thresholded;
-	Mat thresholded2;
-	Mat circles;
+	Mat grayImg;
+	Mat mask;
+	Mat postMask;
+	//Mat thresholded2;
+	//Mat circles;
 	
 	
 	Scalar hsv_min = new Scalar(0,10, 75, 0); 
@@ -74,8 +88,10 @@ public class ImageCapture
 	
 	float xPos = 0; 
 	float yPos = 0;
-	public ImageCapture() throws InterruptedException
+	public ImageCapture(EyeEventNotifier notifier) throws InterruptedException
 	{ 
+		this.notifier = notifier;
+		
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame1.setSize(500,500);
 		frame1.setBounds(0,0,frame1.getWidth(), frame1.getHeight());
@@ -94,8 +110,11 @@ public class ImageCapture
 		webcamImage = new Mat();
 		hsv_image = new Mat();
 		thresholded=new Mat();
-		thresholded2=new Mat();
-		circles = new Mat();
+		grayImg = new Mat();
+		mask = new Mat();
+		postMask = new Mat();
+		//thresholded2=new Mat();
+		//circles = new Mat();
 		mat = Mat.eye(3,3, CvType.CV_8UC1);
 		
 		vc.read(webcamImage);
@@ -124,24 +143,37 @@ public class ImageCapture
 			vc.retrieve(mat);
 			vc.read(webcamImage);
 			
-			Imgproc.cvtColor(webcamImage, hsv_image,Imgproc.COLOR_BGR2HSV);
-			Core.inRange(webcamImage, hsv_min, hsv_max, thresholded);
+			//Imgproc.cvtColor(webcamImage, hsv_image,Imgproc.COLOR_BGR2HSV);
+			Imgproc.cvtColor(webcamImage, grayImg,Imgproc.COLOR_BGR2GRAY);
+			Imgproc.GaussianBlur(grayImg, grayImg, new Size(GAUSSIAN_KERNEL_SIZE,GAUSSIAN_KERNEL_SIZE),0,0);
+			Imgproc.threshold(grayImg, thresholded, THRESHOLDING_VALUE, 255, 0);
+			//applyOpening(postMask, postMask, 4);
+			//Moments m = Imgproc.moments(thresholded, false);
+			Moments m = Imgproc.moments(thresholded, false);
+			Point centroid = new Point(m.get_m10()/m.get_m00(), m.get_m01()/m.get_m00());
+			if ((!Double.isNaN(centroid.x)) && (!Double.isNaN(centroid.y)))
+			{
+				//notifier.mousePosUpdate(centroid.x, centroid.y);
+				java.awt.Point cpoint = new java.awt.Point();
+				cpoint.setLocation(centroid.x, centroid.y);
+			}
+			//Core.inRange(webcamImage, hsv_min, hsv_max, thresholded);
 			//Core.inRange(webcamImage, hsv_min2, hsv_max, thresholded2);
-			Imgproc.GaussianBlur(thresholded, thresholded, new Size(9,9),0,0);
-			Imgproc.Canny(thresholded, thresholded, 500, 150);
+			
+			//Imgproc.Canny(thresholded, thresholded, 500, 150);
 			//Imgproc.GaussianBlur(thresholded2, thresholded2, new Size(9,9),0,0);
 			//Imgproc.Canny(thresholded2, thresholded2, 500, 150);
-			Imgproc.HoughCircles(thresholded, circles, Imgproc.CV_HOUGH_GRADIENT, 1, thresholded.height()/4, 500, 50, 0, 0);
+			//Imgproc.HoughCircles(thresholded, circles, Imgproc.CV_HOUGH_GRADIENT, 1, thresholded.height()/4, 500, 50, 0, 0);
 			
 			//data=webcamImage.get(210,210);
-			
+			/*
 			int cols = circles.cols();
 			int rows = circles.rows();
 			int elemSize = (int)circles.elemSize();
-			float[] data2 = new float[rows *elemSize/4];
+			float[] data2 = new float[rows *elemSize/4];*/
 			
 			
-	        if (data2.length>0)
+	        /*if (data2.length>0)
 	        {  
 	              circles.get(0, 0, data2); // Points to the first element and reads the whole thing                 
 	               for(int i=0; i<data2.length; i=i+3)
@@ -161,6 +193,12 @@ public class ImageCapture
 			
 			image=matToBufferedImage(mat);
 			testImage = matToBufferedImage(hsv_image);
+	        }*/
+			
+			
+			image=matToBufferedImage(mat);
+			//image=matToBufferedImage(thresholded);
+			testImage = matToBufferedImage(thresholded);
 			//filteredImage = matToBufferedImage(thresholded);
 			//newFilteredImage = matToBufferedImage(thresholded2);
 			
@@ -174,7 +212,7 @@ public class ImageCapture
 		} 
 		else 
 		{
-			System.out.print("Fuckin Shit");
+			System.out.print("Something is not correct.");
 		}	
 			
 	}
@@ -225,6 +263,13 @@ public class ImageCapture
 		BufferedImage image2 = new BufferedImage(cols,rows, type);
 		image2.getRaster().setDataElements(0, 0, cols,rows,data);
 		return image2; 
+	}
+	
+	public void applyOpening(Mat src, Mat dst, int radius)
+	{
+		Mat kernel = Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE, new Size(2*radius + 1, 2*radius +1));
+		
+		Imgproc.morphologyEx(src, dst, Imgproc.MORPH_OPEN, kernel);
 	}
 }
 

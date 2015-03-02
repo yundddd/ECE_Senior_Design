@@ -1,5 +1,6 @@
 package seniorDesign;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.List;
 import java.awt.image.BufferedImage;
@@ -17,6 +18,8 @@ import org.opencv.core.Size;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
 import org.opencv.imgproc.Imgproc;
+
+import org.opencv.imgproc.Moments;
  
 
 class Panel extends JPanel
@@ -50,6 +53,16 @@ public class ImageProcessing
 	private static BufferedImage testImage; 
 	private static BufferedImage filteredImage; 
 	private static BufferedImage newFilteredImage; 
+	
+	static long startTime = 0;
+	static long doubleBlinkTime = 0;
+	static int numBlinks = 0;
+	
+	
+	//Constant
+	private static final long BLINK_THRESHOLD_LOW_NS = 300000000l;
+	private static final long BLINK_THRESHOLD_HIGH_NS = 400000000l;
+	private static final long DOUBLE_BLINK_TIMEOUT = 1000000000l;
 	
 	public static void main( String[] args) throws InterruptedException
 	{ 
@@ -91,6 +104,7 @@ public class ImageProcessing
 		Mat thresholded2=new Mat();
 		Mat circles = new Mat();
 		Mat grayImg = new Mat();
+		Mat testCircle = new Mat();
 		
 		Mat mat = Mat.eye(3,3, CvType.CV_8UC1);
 		vc.read(webcamImage);
@@ -141,7 +155,7 @@ public class ImageProcessing
 				//Imgproc.HoughCircles(thresholded, circles, Imgproc.CV_HOUGH_GRADIENT, 1, 100, 300, 100, 0, 0);
 				//data=webcamImage.get(210,210);
 				
-				int cols = circles.cols();
+				/*int cols = circles.cols();
 				int rows = circles.rows();
 				int elemSize = (int)circles.elemSize();
 				float[] data2 = new float[rows *elemSize/4];
@@ -170,6 +184,58 @@ public class ImageProcessing
 				//testImage = matToBufferedImage(hsv_image);
 				filteredImage = matToBufferedImage(thresholded);
 				//newFilteredImage = matToBufferedImage(thresholded2);
+		        } */
+				/*
+				if ((!Double.isNaN(centroid.x)) && (!Double.isNaN(centroid.y)))
+				{
+					//System.out.println(centroid);
+					//testImage = matToBufferedImage(hsv_image);
+					//Core.circle(testCircle, centroid, 10, new Scalar(0,255,0));
+					//testImage = matToBufferedImage(testCircle);
+					
+					
+					
+					
+					//newFilteredImage = matToBufferedImage(thresholded2);
+				}
+				*/
+				//Blink Detection
+				/*
+				else if ((Double.isNaN(centroid.x)) && (Double.isNaN(centroid.y)))
+				{
+					if (startTime == 0)
+					{
+						startTime = System.nanoTime();
+						if (doubleBlinkTime == 0)
+						{
+								doubleBlinkTime = startTime;
+						}
+					}
+					else
+					{
+						if ((System.nanoTime() - doubleBlinkTime) >= DOUBLE_BLINK_TIMEOUT)
+						{
+							startTime = 0;
+							doubleBlinkTime = 0;
+							numBlinks = 0;
+							System.out.println("Timeout");
+						}
+						else if (((System.nanoTime() - startTime) > BLINK_THRESHOLD_LOW_NS) && ((System.nanoTime() - startTime) < BLINK_THRESHOLD_HIGH_NS))
+						{
+							System.out.println("Blink!");
+							numBlinks = numBlinks + 1;
+							startTime = 0;
+							if (numBlinks == 2)
+							{
+								System.out.println("Double Blink!");
+								doubleBlinkTime = 0;
+							}
+						}
+					}
+				}
+				*/
+				image=matToBufferedImage(mat);
+				filteredImage = matToBufferedImage(thresholded);		
 				
 				panel1.setImage(image);
 				panel2.setImage(testImage); 

@@ -11,28 +11,27 @@ import javax.swing.JTextArea;
 
 import com.camera.EyeMotionListener;
 
-class eyeMouseController extends JComponent implements EyeMotionListener
+public class EyeMouseController implements EyeMotionListener
 {
 	/* This class takes X,Y commands from the eye tracker and converts them to mouse movements. */
 	private Point posEye;
 	private int radius;
-	private JFrame parent;
-	private JTextArea posUpdate;
+	private GUITrial gui;
 	private Robot robot;
 	
 	//Constants
 	private static final int USER_CLICK_DURATION_MS = 20; 
 	
-	public void eyeMouseController(JFrame parent)
+	public EyeMouseController(GUITrial gui)
 	{
 		radius = 20;
-		this.parent = parent;
+		this.gui = gui;
 		newRobot();
 	}
-	public void eyeMouseController(JFrame parent, int radius)
+	public EyeMouseController( GUITrial gui, int radius)
 	{
 		this.radius = radius;
-		this.parent = parent;
+		this.gui = gui;
 		newRobot();
 	}
 	private void newRobot()
@@ -50,10 +49,13 @@ class eyeMouseController extends JComponent implements EyeMotionListener
 	public void eyeMoved(Point p)
 	{
 		// Assuming point P is global (X,Y) coordinates
-		robot.mouseMove(p.x, p.y);
-		this.repaint();
-		updatePosFrame();
+		//robot.mouseMove(p.x, p.y);
+		System.out.println("Would have moved mouse to X,Y");
+		System.out.println(p.x);
+		System.out.println(p.y);
+		gui.posUpdate(p);
 	}
+	
 	public void eyeClick()
 	{
 		// Input a click
@@ -61,10 +63,5 @@ class eyeMouseController extends JComponent implements EyeMotionListener
 		robot.delay(USER_CLICK_DURATION_MS);
 		robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
 	}
-	public void updatePosFrame()
-	{
-		posUpdate.setText("Eye X: ".concat(Integer.toString(posEye.x).concat("\nEye Y: ").concat(Integer.toString(posEye.y))).concat("\n"));
-	}
-	
 	
 }
