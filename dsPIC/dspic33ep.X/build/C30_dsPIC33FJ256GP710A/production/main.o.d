@@ -3,4 +3,5 @@ main.c  \
 mpu9150.h  \
 system.h  \
  user.h  \
-interrupts.h 
+interrupts.h  \
+MadgwickAHRS.h 

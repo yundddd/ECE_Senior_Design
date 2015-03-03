@@ -23,7 +23,7 @@ float calibrated_values[3];
 
 unsigned char buff[20]; //buffer to hold raw bytes
 int offset_acc[3] = {-327, 163, 0};
-int offset_gyro[3] = {0x00};
+int offset_gyro[3] = {0x0026,0x000B,0xFFEC};
 int offset_mag[3] = {0, 2, 0};
 
 /** write a byte to I2C1 bus
@@ -208,16 +208,16 @@ void calibrateGyro(void) {
     unsigned char buffer[14]; //only need gyro at buffer+8
     int i;
     int gyro[3] = {0x00};
-    for (i = 0; i < 10; i++) {//possibility of overflowing is very low
-        __delay_ms(100);
+    for (i = 0; i < 100; i++) {//possibility of overflowing is very low
+        __delay_ms(20);
         getAccGyro(buffer);
         gyro[0] += (((unsigned int) buffer[8]) << 8) | buffer[9];
         gyro[1] += (((unsigned int) buffer[10]) << 8) | buffer[11];
         gyro[2] += (((unsigned int) buffer[12]) << 8) | buffer[13];
     }
-    gyro[0] /= 10; //averaging
-    gyro[1] /= 10;
-    gyro[2] /= 10;
+    gyro[0] /= 100; //averaging
+    gyro[1] /= 100;
+    gyro[2] /= 100;
 
     offset_gyro[0] = 0 - gyro[0];
     offset_gyro[1] = 0 - gyro[1];

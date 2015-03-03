@@ -25,6 +25,7 @@
 #define I2C_BRG(freq) (FCY/freq-FCY/1111111)-1
 #include <libpic30.h>
 #include "interrupts.h"
+#include "MadgwickAHRS.h"
 /******************************************************************************/
 /* Global Variable Declaration                                                */
 /******************************************************************************/
@@ -41,6 +42,9 @@ char magStringZ[20];
 char LF = 0x0A;
 char CR = 0x0D;
 char MAG = 0xDE;
+float euler[3];
+int delay_less = 0;
+int init_converge_counter = 0;
 
 int16_t main(void) {
     float measurements[9];
@@ -85,20 +89,43 @@ int16_t main(void) {
      */
 
     while (1) {
-        //  LATBbits.LATB6 = ~LATBbits.LATB6;
-        if (samplingFlag) {
-            LATBbits.LATB6 = 1;
-            get9dof(measurements);
-            transformation(&measurements[6]);
-            send_9dof_to_PC(measurements);
-            samplingFlag = 0;
-            LATBbits.LATB6 = 0;
+        LATBbits.LATB6 = ~LATBbits.LATB6;
+        if (sendMagwickFlag) {// 907us
+
+            float quat[4] = {q0, q1, q2, q3};
+            quat_2_euler(quat, euler);
+            euler[0] = rad2deg(euler[0]); //convert to deg
+            euler[1] = rad2deg(euler[1]);
+            euler[2] = rad2deg(euler[2]);
+            send_floats_to_PC(euler, 3); //send pitch roll yaw
+            sendMagwickFlag = 0;
+            delay_less = 1;
+
         } else if (calibrate_gyro_flag) {
             calibrate_gyro_flag = 0;
             LATBbits.LATB6 = 1;
             calibrateGyro();
             LATBbits.LATB6 = 0;
+        } //11.7 ms
+
+        if (init_converge_counter < 600) {
+            init_converge_counter++;
+            beta = 5;
+        } else {
+            beta = 0.041;
         }
+        get9dof(measurements);
+        transformation(&measurements[6]);
+        // MadgwickAHRSupdateIMU(measurements[3], measurements[4], measurements[5], measurements[0], measurements[1], measurements[2]);
+        MadgwickAHRSupdate(measurements[3], measurements[4], measurements[5], measurements[0], measurements[1], measurements[2],measurements[6], measurements[7], measurements[8]);
+        if (delay_less) {
+            __delay_ms(7);
+            delay_less = 0;
+        } else {
+            __delay_ms(8);
+        }
+
+
 
     }
     while (1);

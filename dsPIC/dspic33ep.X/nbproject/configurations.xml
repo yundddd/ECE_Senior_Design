@@ -8,6 +8,7 @@
       <itemPath>user.h</itemPath>
       <itemPath>mpu9150.h</itemPath>
       <itemPath>interrupts.h</itemPath>
+      <itemPath>MadgwickAHRS.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -23,6 +24,7 @@
       <itemPath>traps.c</itemPath>
       <itemPath>user.c</itemPath>
       <itemPath>mpu9150.c</itemPath>
+      <itemPath>MadgwickAHRS.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

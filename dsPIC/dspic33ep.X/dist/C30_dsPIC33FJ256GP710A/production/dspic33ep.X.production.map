@@ -28,6 +28,7 @@ Command:
   build/C30_dsPIC33FJ256GP710A/production/traps.o \
   build/C30_dsPIC33FJ256GP710A/production/user.o \
   build/C30_dsPIC33FJ256GP710A/production/mpu9150.o \
+  build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   -Tp33EP128MC202.gld.00 \
@@ -73,11 +74,21 @@ d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(crt
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
                               d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o) (__data_init_extended)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                              build/C30_dsPIC33FJ256GP710A/production/user.o (___delay32)
+                              build/C30_dsPIC33FJ256GP710A/production/main.o (___delay32)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
-                              build/C30_dsPIC33FJ256GP710A/production/mpu9150.o (___subsf3)
+                              build/C30_dsPIC33FJ256GP710A/production/user.o (___subsf3)
+d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(asinf.epeo)
+                              build/C30_dsPIC33FJ256GP710A/production/user.o (_asinf)
+d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(atan2f.epeo)
+                              build/C30_dsPIC33FJ256GP710A/production/user.o (_atan2f)
+d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(atanf.epeo)
+                              d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(atan2f.epeo) (_atanf)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(divsf3.epeo)
-                              build/C30_dsPIC33FJ256GP710A/production/mpu9150.o (___divsf3)
+                              build/C30_dsPIC33FJ256GP710A/production/user.o (___divsf3)
+d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(errno.epeo)
+                              d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(atan2f.epeo) (_errno)
+d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(feqltle.epeo)
+                              build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o (___eqsf2)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo)
                               build/C30_dsPIC33FJ256GP710A/production/user.o (_(float, int, long long, short, float, short, int))
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatsisf.epeo)
@@ -85,13 +96,21 @@ d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatsi
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fpack.epeo)
                               d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(addsf3.epeo) (__fpack)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack.epeo)
-                              d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo) (__funpack)
+                              d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(atanf.epeo) (__funpack)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
                               d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(addsf3.epeo) (__funpack2)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(futil.epeo)
                               d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(addsf3.epeo) (__fPropagateNaN)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(mulsf3.epeo)
                               build/C30_dsPIC33FJ256GP710A/production/user.o (___mulsf3)
+d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(sqrtf.epeo)
+                              build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o (_sqrtf)
+d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(asinacosf.epeo)
+                              d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(asinf.epeo) (__asinacosf)
+d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fcompare.epeo)
+                              d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(feqltle.epeo) (__fcompare)
+d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fgtge.epeo)
+                              d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(asinacosf.epeo) (___gtsf2)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatdisf.epeo)
                               d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatsisf.epeo) (___floatdisf)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
@@ -102,26 +121,29 @@ Program Memory  [Origin = 0x200, Length = 0x155ec]
 
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
-.text                        0x200               0x4d2           0x73b  (1851)
-.const                       0x6d2                0x68            0x9c  (156)
-.text                        0x73a               0x928           0xdbc  (3516)
-.dinit                      0x1062                0x2c            0x42  (66)
-.init.delay32               0x108e                0x1c            0x2a  (42)
-.text                       0x10aa                 0xe            0x15  (21)
+.text                        0x200               0x750           0xaf8  (2808)
+.const                       0x950                0x68            0x9c  (156)
+.text                        0x9b8              0x2524          0x37b6  (14262)
+.dinit                      0x2edc                0x4a            0x6f  (111)
+.init.delay32               0x2f26                0x1c            0x2a  (42)
+.text                       0x2f42                 0xe            0x15  (21)
 
-                     Total program memory used (bytes):         0x1614  (5652) 4%
+                     Total program memory used (bytes):         0x43f8  (17400) 13%
 
 
 Data Memory  [Origin = 0x1000, Length = 0x4000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                       0x1000                   0            0x62  (98)
-.ndata                      0x1062                   0             0xc  (12)
-.nbss                       0x106e                   0             0x4  (4)
-.ndata                      0x1072                   0             0x4  (4)
+.nbss                       0x1000                   0            0x6c  (108)
+.ndata                      0x106c                   0            0x12  (18)
+.nbss                       0x107e                   0             0xc  (12)
+.ndata                      0x108a                   0             0xa  (10)
+.nbss                       0x1094                   0             0x4  (4)
+.ndata                      0x1098                   0             0x4  (4)
+.nbss                       0x109c                   0             0x2  (2)
 
-                        Total data memory used (bytes):           0x76  (118) <1%
+                        Total data memory used (bytes):           0x9e  (158) <1%
 
 
 Dynamic Memory Usage
@@ -129,9 +151,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x1076                              0x3f8a  (16266)
+stack                       0x109e                              0x3f62  (16226)
 
-                        Maximum dynamic memory (bytes):         0x3f8a  (16266)
+                        Maximum dynamic memory (bytes):         0x3f62  (16226)
 
 
 External Symbols in Data Memory (by address):
@@ -139,32 +161,50 @@ External Symbols in Data Memory (by address):
                     0x1000                  _magStringX
                     0x1014                  _magStringY
                     0x1028                  _magStringZ
-                    0x103c                  _calibrated_values
-                    0x1048                  _buff
-                    0x105c                  _offset_gyro
-                    0x1062                  _offset_acc
-                    0x1068                  _offset_mag
-                    0x106e                  _samplingFlag
-                    0x1070                  _calibrate_gyro_flag
-                    0x1072                  _LF
-                    0x1073                  _CR
-                    0x1074                  _MAG
+                    0x103c                  _euler
+                    0x1048                  _delay_less
+                    0x104a                  _init_converge_counter
+                    0x104c                  _calibrated_values
+                    0x1058                  _buff
+                    0x106c                  _offset_acc
+                    0x1072                  _offset_gyro
+                    0x1078                  _offset_mag
+                    0x107e                  _q1
+                    0x1082                  _q2
+                    0x1086                  _q3
+                    0x108a                  _beta
+                    0x108e                  _q0
+                    0x1092                  _instability_fix
+                    0x1094                  _sendMagwickFlag
+                    0x1096                  _calibrate_gyro_flag
+                    0x1098                  _LF
+                    0x1099                  _CR
+                    0x109a                  _MAG
 
 External Symbols in Data Memory (by name):
 
-                    0x1073                  _CR
-                    0x1072                  _LF
-                    0x1074                  _MAG
-                    0x1048                  _buff
-                    0x1070                  _calibrate_gyro_flag
-                    0x103c                  _calibrated_values
+                    0x1099                  _CR
+                    0x1098                  _LF
+                    0x109a                  _MAG
+                    0x108a                  _beta
+                    0x1058                  _buff
+                    0x1096                  _calibrate_gyro_flag
+                    0x104c                  _calibrated_values
+                    0x1048                  _delay_less
+                    0x103c                  _euler
+                    0x104a                  _init_converge_counter
+                    0x1092                  _instability_fix
                     0x1000                  _magStringX
                     0x1014                  _magStringY
                     0x1028                  _magStringZ
-                    0x1062                  _offset_acc
-                    0x105c                  _offset_gyro
-                    0x1068                  _offset_mag
-                    0x106e                  _samplingFlag
+                    0x106c                  _offset_acc
+                    0x1072                  _offset_gyro
+                    0x1078                  _offset_mag
+                    0x108e                  _q0
+                    0x107e                  _q1
+                    0x1082                  _q2
+                    0x1086                  _q3
+                    0x1094                  _sendMagwickFlag
 
 External Symbols in Program Memory (by address):
 
@@ -191,56 +231,74 @@ External Symbols in Program Memory (by address):
                   0x0003b6                  _StopI2C1
                   0x0003be                  ___subsf3
                   0x0003c0                  ___addsf3
-                  0x00047a                  ___divsf3
-                  0x0004fe                  ___fixsfsi
-                  0x000540                  ___floatsisf
-                  0x000546                  __fpack
-                  0x000592                  __funpack
-                  0x0005bc                  __funpack2
-                  0x0005cc                  __fPropagateNaN
-                  0x0005de                  __fbopExit
-                  0x0005e6                  __fbopReturnNaN
-                  0x0005ec                  ___mulsf3
-                  0x000654                  ___floatdisf
-                  0x000674                  ___floatundisf
-                  0x00073a                  _I2C1_write_byte
-                  0x00079c                  _I2C1_read_byte
-                  0x000828                  _I2C1_read_bytes
-                  0x0008e4                  _initMPU9150
-                  0x000918                  _get9dof
-                  0x00092e                  _getAccGyro
-                  0x000940                  _getMag
-                  0x000968                  _translateMeasurements
-                  0x000b76                  _calibrateGyro
-                  0x000c0e                  _transformation
-                  0x000d02                  _InitApp
-                  0x000d32                  _InitIO
-                  0x000d46                  _MapPins
-                  0x000d88                  _InitTimer
-                  0x000db0                  _initUART1
-                  0x000e06                  _intiI2C1
-                  0x000e1a                  _print_line_uart1
-                  0x000e6e                  _print_uart1
-                  0x000ea2                  _print_string
-                  0x000eca                  _send_9dof_to_PC
-                  0x000f3e                  _floatToLong
-                  0x000f5c                  _test_mpu9150
-                  0x00101e                  _main
-                  0x00108e                  ___delay32
-                  0x0010aa                  _ConfigureOscillator
+                  0x00047a                  _asinf
+                  0x00047e                  _atan2f
+                  0x0004b8                  _atanf
+                  0x000582                  ___divsf3
+                  0x000606                  ___eqsf2
+                  0x000606                  ___ltsf2
+                  0x000606                  ___lesf2
+                  0x00060a                  ___fixsfsi
+                  0x00064c                  ___floatsisf
+                  0x000652                  __fpack
+                  0x00069e                  __funpack
+                  0x0006c8                  __funpack2
+                  0x0006d8                  __fPropagateNaN
+                  0x0006ea                  __fbopExit
+                  0x0006f2                  __fbopReturnNaN
+                  0x0006f8                  ___mulsf3
+                  0x000760                  _sqrtf
+                  0x0007ca                  __asinacosf
+                  0x000898                  __fcompare
+                  0x0008ce                  ___gesf2
+                  0x0008ce                  ___gtsf2
+                  0x0008d2                  ___floatdisf
+                  0x0008f2                  ___floatundisf
+                  0x0009b8                  _MadgwickAHRSupdate
+                  0x001afa                  _MadgwickAHRSupdateIMU
+                  0x002230                  _invSqrt
+                  0x002320                  _I2C1_write_byte
+                  0x002382                  _I2C1_read_byte
+                  0x00240e                  _I2C1_read_bytes
+                  0x0024ca                  _initMPU9150
+                  0x0024fe                  _get9dof
+                  0x002514                  _getAccGyro
+                  0x002526                  _getMag
+                  0x00254e                  _translateMeasurements
+                  0x00275c                  _calibrateGyro
+                  0x0027f6                  _transformation
+                  0x0028ea                  _InitApp
+                  0x00291a                  _InitIO
+                  0x00292e                  _MapPins
+                  0x002970                  _InitTimer
+                  0x002998                  _initUART1
+                  0x0029ee                  _intiI2C1
+                  0x002a02                  _print_line_uart1
+                  0x002a56                  _print_uart1
+                  0x002a8a                  _print_string
+                  0x002ab2                  _send_floats_to_PC
+                  0x002b2a                  _floatToLong
+                  0x002b48                  _test_mpu9150
+                  0x002c0a                  _rad2deg
+                  0x002c28                  _quat_2_euler
+                  0x002dac                  _main
+                  0x002f26                  ___delay32
+                  0x002f42                  _ConfigureOscillator
 
 External Symbols in Program Memory (by name):
 
                   0x000334                  _AckI2C1
-                  0x0010aa                  _ConfigureOscillator
-                  0x00079c                  _I2C1_read_byte
-                  0x000828                  _I2C1_read_bytes
-                  0x00073a                  _I2C1_write_byte
+                  0x002f42                  _ConfigureOscillator
+                  0x002382                  _I2C1_read_byte
+                  0x00240e                  _I2C1_read_bytes
+                  0x002320                  _I2C1_write_byte
                   0x00033e                  _IdleI2C1
-                  0x000d02                  _InitApp
-                  0x000d32                  _InitIO
-                  0x000d88                  _InitTimer
-                  0x000d46                  _MapPins
+                  0x0028ea                  _InitApp
+                  0x00291a                  _InitIO
+                  0x002970                  _InitTimer
+                  0x0009b8                  _MadgwickAHRSupdate
+                  0x001afa                  _MadgwickAHRSupdateIMU
+                  0x00292e                  _MapPins
                   0x000362                  _MasterReadI2C1
                   0x000372                  _MasterWriteI2C1
                   0x00039a                  _NotAckI2C1
@@ -257,40 +315,54 @@ External Symbols in Program Memory (by name):
                   0x000310                  __StackError
                   0x0002d2                  __U1RXInterrupt
                   0x0003c0                  ___addsf3
-                  0x00108e                  ___delay32
-                  0x00047a                  ___divsf3
-                  0x0004fe                  ___fixsfsi
-                  0x000654                  ___floatdisf
-                  0x000540                  ___floatsisf
-                  0x000674                  ___floatundisf
-                  0x0005ec                  ___mulsf3
+                  0x002f26                  ___delay32
+                  0x000582                  ___divsf3
+                  0x000606                  ___eqsf2
+                  0x00060a                  ___fixsfsi
+                  0x0008d2                  ___floatdisf
+                  0x00064c                  ___floatsisf
+                  0x0008f2                  ___floatundisf
+                  0x0008ce                  ___gesf2
+                  0x0008ce                  ___gtsf2
+                  0x000606                  ___lesf2
+                  0x000606                  ___ltsf2
+                  0x0006f8                  ___mulsf3
                   0x0003be                  ___subsf3
+                  0x0007ca                  __asinacosf
                   0x000238                  __data_init
                   0x000238                  __data_init_extended
-                  0x0005cc                  __fPropagateNaN
-                  0x0005de                  __fbopExit
-                  0x0005e6                  __fbopReturnNaN
-                  0x000546                  __fpack
-                  0x000592                  __funpack
-                  0x0005bc                  __funpack2
+                  0x0006d8                  __fPropagateNaN
+                  0x0006ea                  __fbopExit
+                  0x0006f2                  __fbopReturnNaN
+                  0x000898                  __fcompare
+                  0x000652                  __fpack
+                  0x00069e                  __funpack
+                  0x0006c8                  __funpack2
                   0x00022c                  __psv_init
                   0x000200                  __resetPRI
-                  0x000b76                  _calibrateGyro
-                  0x000f3e                  _floatToLong
-                  0x000918                  _get9dof
-                  0x00092e                  _getAccGyro
-                  0x000940                  _getMag
-                  0x0008e4                  _initMPU9150
-                  0x000db0                  _initUART1
-                  0x000e06                  _intiI2C1
-                  0x00101e                  _main
-                  0x000e1a                  _print_line_uart1
-                  0x000ea2                  _print_string
-                  0x000e6e                  _print_uart1
-                  0x000eca                  _send_9dof_to_PC
-                  0x000f5c                  _test_mpu9150
-                  0x000c0e                  _transformation
-                  0x000968                  _translateMeasurements
+                  0x00047a                  _asinf
+                  0x00047e                  _atan2f
+                  0x0004b8                  _atanf
+                  0x00275c                  _calibrateGyro
+                  0x002b2a                  _floatToLong
+                  0x0024fe                  _get9dof
+                  0x002514                  _getAccGyro
+                  0x002526                  _getMag
+                  0x0024ca                  _initMPU9150
+                  0x002998                  _initUART1
+                  0x0029ee                  _intiI2C1
+                  0x002230                  _invSqrt
+                  0x002dac                  _main
+                  0x002a02                  _print_line_uart1
+                  0x002a8a                  _print_string
+                  0x002a56                  _print_uart1
+                  0x002c28                  _quat_2_euler
+                  0x002c0a                  _rad2deg
+                  0x002ab2                  _send_floats_to_PC
+                  0x000760                  _sqrtf
+                  0x002b48                  _test_mpu9150
+                  0x0027f6                  _transformation
+                  0x00254e                  _translateMeasurements
 
 Memory Configuration
 
@@ -320,6 +392,7 @@ LOAD build/C30_dsPIC33FJ256GP710A/production/system.o
 LOAD build/C30_dsPIC33FJ256GP710A/production/traps.o
 LOAD build/C30_dsPIC33FJ256GP710A/production/user.o
 LOAD build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+LOAD build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
                     0x0001                  __MPLAB_BUILD = 0x1
 LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a
 LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libfx-elf.a
@@ -346,7 +419,7 @@ LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libfx-elf.a
                   0x000002          0x2 SHORT 0x0 ((ABSOLUTE (__reset) >> 0x10) & 0x7f)
                   0x000003          0x2 SHORT 0x0
 
-.text             0x000200        0x4d2
+.text             0x000200        0x750
  *(.init)
  .init            0x000200         0x38 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
                   0x000200                  __resetPRI
@@ -392,37 +465,58 @@ LOAD d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libfx-elf.a
  .libm.subsf3     0x0003be         0xbc d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
                   0x0003be                  ___subsf3
                   0x0003c0                  ___addsf3
- .libm.divfs3     0x00047a         0x84 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(divsf3.epeo)
-                  0x00047a                  ___divsf3
- .libm.fixsfsi    0x0004fe         0x42 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo)
-                  0x0004fe                  _(float, int, long long, short, float, short, int)
+ .libm.asinf      0x00047a          0x4 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(asinf.epeo)
+                  0x00047a                  _asinf
+ .libm.atanf      0x00047e         0x3a d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(atan2f.epeo)
+                  0x00047e                  _atan2f
+ .libm.atanf      0x0004b8         0xca d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(atanf.epeo)
+                  0x0004b8                  _atanf
+ .libm.divfs3     0x000582         0x84 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(divsf3.epeo)
+                  0x000582                  ___divsf3
+ .libm.eqsf2      0x000606          0x4 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(feqltle.epeo)
+                  0x000606                  ___eqsf2
+                  0x000606                  ___ltsf2
+                  0x000606                  ___lesf2
+ .libm.fixsfsi    0x00060a         0x42 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo)
+                  0x00060a                  _(float, int, long long, short, float, short, int)
  .libm.floatsisf
-                  0x000540          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatsisf.epeo)
-                  0x000540                  ___floatsisf
- .libm.fpack      0x000546         0x4c d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fpack.epeo)
-                  0x000546                  __fpack
- .libm.funpack    0x000592         0x2a d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack.epeo)
-                  0x000592                  __funpack
+                  0x00064c          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatsisf.epeo)
+                  0x00064c                  ___floatsisf
+ .libm.fpack      0x000652         0x4c d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fpack.epeo)
+                  0x000652                  __fpack
+ .libm.funpack    0x00069e         0x2a d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack.epeo)
+                  0x00069e                  __funpack
  .libm.funpack2
-                  0x0005bc         0x10 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
-                  0x0005bc                  __funpack2
+                  0x0006c8         0x10 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
+                  0x0006c8                  __funpack2
  .libm.fPropagateNaN
-                  0x0005cc         0x12 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(futil.epeo)
-                  0x0005cc                  __fPropagateNaN
+                  0x0006d8         0x12 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(futil.epeo)
+                  0x0006d8                  __fPropagateNaN
  .libm.fbobExit
-                  0x0005de          0x8 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(futil.epeo)
-                  0x0005de                  __fbopExit
+                  0x0006ea          0x8 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(futil.epeo)
+                  0x0006ea                  __fbopExit
  .libm.fbopReturnNaN
-                  0x0005e6          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(futil.epeo)
-                  0x0005e6                  __fbopReturnNaN
- .libm.mulsf3     0x0005ec         0x68 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(mulsf3.epeo)
-                  0x0005ec                  ___mulsf3
+                  0x0006f2          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(futil.epeo)
+                  0x0006f2                  __fbopReturnNaN
+ .libm.mulsf3     0x0006f8         0x68 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(mulsf3.epeo)
+                  0x0006f8                  ___mulsf3
+ .libm.sqrtf      0x000760         0x6a d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(sqrtf.epeo)
+                  0x000760                  _sqrtf
+ .libm.asinacosf
+                  0x0007ca         0xce d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(asinacosf.epeo)
+                  0x0007ca                  __asinacosf
+ .libm.fcompare
+                  0x000898         0x36 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fcompare.epeo)
+                  0x000898                  __fcompare
+ .libm.gtsf2      0x0008ce          0x4 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fgtge.epeo)
+                  0x0008ce                  ___gesf2
+                  0x0008ce                  ___gtsf2
  .libm.floatdisf
-                  0x000654         0x20 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatdisf.epeo)
-                  0x000654                  ___floatdisf
+                  0x0008d2         0x20 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatdisf.epeo)
+                  0x0008d2                  ___floatdisf
  .libm.floatundisf
-                  0x000674         0x5e d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
-                  0x000674                  ___floatundisf
+                  0x0008f2         0x5e d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
+                  0x0008f2                  ___floatundisf
 
 usercode
  *(usercode)
@@ -460,53 +554,58 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x2d2a
+.debug_info       0x000000       0x3587
  *(.debug_info)
  .debug_info      0x000000         0xad build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
  .debug_info      0x0000ad        0x32a build/C30_dsPIC33FJ256GP710A/production/interrupts.o
- .debug_info      0x0003d7        0x58f build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_info      0x000966        0x180 build/C30_dsPIC33FJ256GP710A/production/system.o
- .debug_info      0x000ae6        0x38a build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_info      0x000e70       0x15b7 build/C30_dsPIC33FJ256GP710A/production/user.o
- .debug_info      0x002427        0x903 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_info      0x0003d7        0x6aa build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_info      0x000a81        0x180 build/C30_dsPIC33FJ256GP710A/production/system.o
+ .debug_info      0x000c01        0x38a build/C30_dsPIC33FJ256GP710A/production/traps.o
+ .debug_info      0x000f8b       0x166d build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_info      0x0025f8        0x903 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_info      0x002efb        0x68c build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x534
+.debug_abbrev     0x000000        0x688
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x1f build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
  .debug_abbrev    0x00001f         0xc1 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
- .debug_abbrev    0x0000e0         0xd1 build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_abbrev    0x0001b1         0x4c build/C30_dsPIC33FJ256GP710A/production/system.o
- .debug_abbrev    0x0001fd         0x7d build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_abbrev    0x00027a        0x17f build/C30_dsPIC33FJ256GP710A/production/user.o
- .debug_abbrev    0x0003f9        0x13b build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_abbrev    0x0000e0         0xfc build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_abbrev    0x0001dc         0x4c build/C30_dsPIC33FJ256GP710A/production/system.o
+ .debug_abbrev    0x000228         0x7d build/C30_dsPIC33FJ256GP710A/production/traps.o
+ .debug_abbrev    0x0002a5        0x1cd build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_abbrev    0x000472        0x13b build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_abbrev    0x0005ad         0xdb build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
 
-.debug_line       0x000000        0xf26
+.debug_line       0x000000       0x1476
  *(.debug_line)
  .debug_line      0x000000         0x24 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
  .debug_line      0x000024         0xee build/C30_dsPIC33FJ256GP710A/production/interrupts.o
- .debug_line      0x000112        0x1a0 build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_line      0x0002b2         0xba build/C30_dsPIC33FJ256GP710A/production/system.o
- .debug_line      0x00036c        0x187 build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_line      0x0004f3        0x516 build/C30_dsPIC33FJ256GP710A/production/user.o
- .debug_line      0x000a09        0x51d build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_line      0x000112        0x218 build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_line      0x00032a         0xba build/C30_dsPIC33FJ256GP710A/production/system.o
+ .debug_line      0x0003e4        0x187 build/C30_dsPIC33FJ256GP710A/production/traps.o
+ .debug_line      0x00056b        0x590 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_line      0x000afb        0x51d build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_line      0x001018        0x45e build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
 
-.debug_frame      0x000000        0x288
+.debug_frame      0x000000        0x348
  *(.debug_frame)
  .debug_frame     0x000000         0x24 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
- .debug_frame     0x000024         0x24 build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_frame     0x000048         0x24 build/C30_dsPIC33FJ256GP710A/production/system.o
- .debug_frame     0x00006c         0x94 build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_frame     0x000100         0xd4 build/C30_dsPIC33FJ256GP710A/production/user.o
- .debug_frame     0x0001d4         0xb4 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_frame     0x000024         0x5c build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_frame     0x000080         0x24 build/C30_dsPIC33FJ256GP710A/production/system.o
+ .debug_frame     0x0000a4         0x94 build/C30_dsPIC33FJ256GP710A/production/traps.o
+ .debug_frame     0x000138         0xf4 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_frame     0x00022c         0xb4 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_frame     0x0002e0         0x68 build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
 
-.debug_str        0x000000        0x11e
+.debug_str        0x000000        0x15f
  *(.debug_str)
- .debug_str       0x000000         0x2a build/C30_dsPIC33FJ256GP710A/production/interrupts.o
- .debug_str       0x00002a         0x34 build/C30_dsPIC33FJ256GP710A/production/main.o
- .debug_str       0x00005e          0xc build/C30_dsPIC33FJ256GP710A/production/traps.o
- .debug_str       0x00006a         0x74 build/C30_dsPIC33FJ256GP710A/production/user.o
- .debug_str       0x0000de         0x40 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_str       0x000000         0x2d build/C30_dsPIC33FJ256GP710A/production/interrupts.o
+ .debug_str       0x00002d         0x58 build/C30_dsPIC33FJ256GP710A/production/main.o
+ .debug_str       0x000085          0xc build/C30_dsPIC33FJ256GP710A/production/traps.o
+ .debug_str       0x000091         0x74 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .debug_str       0x000105         0x40 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_str       0x000145         0x1a build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
 
 .debug_loc
  *(.debug_loc)
@@ -515,25 +614,27 @@ __FUID3
  *(.debug_macinfo)
 
 .debug_pubnames
-                  0x000000        0x350
+                  0x000000        0x42d
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x4e build/C30_dsPIC33FJ256GP710A/production/interrupts.o
+                  0x000000         0x51 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
  .debug_pubnames
-                  0x00004e         0x5e build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x000051         0x91 build/C30_dsPIC33FJ256GP710A/production/main.o
  .debug_pubnames
-                  0x0000ac         0x2a build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x0000e2         0x2a build/C30_dsPIC33FJ256GP710A/production/system.o
  .debug_pubnames
-                  0x0000d6         0xa2 build/C30_dsPIC33FJ256GP710A/production/traps.o
+                  0x00010c         0xa2 build/C30_dsPIC33FJ256GP710A/production/traps.o
  .debug_pubnames
-                  0x000178         0xc9 build/C30_dsPIC33FJ256GP710A/production/user.o
+                  0x0001ae         0xe8 build/C30_dsPIC33FJ256GP710A/production/user.o
  .debug_pubnames
-                  0x000241        0x10f build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+                  0x000296        0x10f build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_pubnames
+                  0x0003a5         0x88 build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
 
 .debug_ranges
  *(.debug_ranges)
 
-.debug_aranges    0x000000         0x90
+.debug_aranges    0x000000         0xa8
  *(.debug_aranges)
  .debug_aranges
                   0x000000         0x18 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
@@ -547,6 +648,8 @@ __FUID3
                   0x000060         0x18 build/C30_dsPIC33FJ256GP710A/production/user.o
  .debug_aranges
                   0x000078         0x18 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .debug_aranges
+                  0x000090         0x18 build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
 
 .ivt              0x000004        0x13e
                   0x000004          0x4 LONG 0x300 DEFINED (__OscillatorFail)?ABSOLUTE (__OscillatorFail):ABSOLUTE (__DefaultInterrupt)
@@ -1805,108 +1908,147 @@ OUTPUT(dist/C30_dsPIC33FJ256GP710A/production/dspic33ep.X.production.elf elf32-p
 LOAD data_init
 
 .debug_pubtypes
-                  0x000090        0x2bc
+                  0x0000a8        0x2bc
  .debug_pubtypes
-                  0x000090         0x12 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+                  0x0000a8         0x12 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
  .debug_pubtypes
-                  0x0000a2         0x2f build/C30_dsPIC33FJ256GP710A/production/interrupts.o
+                  0x0000ba         0x2f build/C30_dsPIC33FJ256GP710A/production/interrupts.o
  .debug_pubtypes
-                  0x0000d1         0x5a build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x0000e9         0x5a build/C30_dsPIC33FJ256GP710A/production/main.o
  .debug_pubtypes
-                  0x00012b         0x12 build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x000143         0x12 build/C30_dsPIC33FJ256GP710A/production/system.o
  .debug_pubtypes
-                  0x00013d         0x35 build/C30_dsPIC33FJ256GP710A/production/traps.o
+                  0x000155         0x35 build/C30_dsPIC33FJ256GP710A/production/traps.o
  .debug_pubtypes
-                  0x000172        0x163 build/C30_dsPIC33FJ256GP710A/production/user.o
+                  0x00018a        0x163 build/C30_dsPIC33FJ256GP710A/production/user.o
  .debug_pubtypes
-                  0x0002d5         0x77 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+                  0x0002ed         0x77 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
 
 __c30_signature
-                  0x00034c         0xae
+                  0x000364         0xea
  __c30_signature
-                  0x00034c          0x6 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
+                  0x000364          0x6 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
  __c30_signature
-                  0x000352          0x6 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
+                  0x00036a          0x6 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
  __c30_signature
-                  0x000358          0x6 build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x000370          0x6 build/C30_dsPIC33FJ256GP710A/production/main.o
  __c30_signature
-                  0x00035e          0x6 build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x000376          0x6 build/C30_dsPIC33FJ256GP710A/production/system.o
  __c30_signature
-                  0x000364          0x6 build/C30_dsPIC33FJ256GP710A/production/traps.o
+                  0x00037c          0x6 build/C30_dsPIC33FJ256GP710A/production/traps.o
  __c30_signature
-                  0x00036a          0x6 build/C30_dsPIC33FJ256GP710A/production/user.o
+                  0x000382          0x6 build/C30_dsPIC33FJ256GP710A/production/user.o
  __c30_signature
-                  0x000370          0x6 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+                  0x000388          0x6 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
  __c30_signature
-                  0x000376          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(AckI2C1.o)
+                  0x00038e          0x6 build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
  __c30_signature
-                  0x00037c          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(IdleI2C1.o)
+                  0x000394          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(AckI2C1.o)
  __c30_signature
-                  0x000382          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(MasterReadI2C1.o)
+                  0x00039a          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(IdleI2C1.o)
  __c30_signature
-                  0x000388          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(MasterWriteI2C1.o)
+                  0x0003a0          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(MasterReadI2C1.o)
  __c30_signature
-                  0x00038e          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(NotAckI2C1.o)
+                  0x0003a6          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(MasterWriteI2C1.o)
  __c30_signature
-                  0x000394          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(OpenI2C1.o)
+                  0x0003ac          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(NotAckI2C1.o)
  __c30_signature
-                  0x00039a          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(StartI2C1.o)
+                  0x0003b2          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(OpenI2C1.o)
  __c30_signature
-                  0x0003a0          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(StopI2C1.o)
+                  0x0003b8          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(StartI2C1.o)
  __c30_signature
-                  0x0003a6          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
+                  0x0003be          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib/dsPIC33E\libp33EP128MC202-elf.a(StopI2C1.o)
  __c30_signature
-                  0x0003ac          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
+                  0x0003c4          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o)
  __c30_signature
-                  0x0003b2          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x0003ca          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
  __c30_signature
-                  0x0003b8          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
+                  0x0003d0          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
  __c30_signature
-                  0x0003be          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(divsf3.epeo)
+                  0x0003d6          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
  __c30_signature
-                  0x0003c4          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo)
+                  0x0003dc          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(asinf.epeo)
  __c30_signature
-                  0x0003ca          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatsisf.epeo)
+                  0x0003e2          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(atan2f.epeo)
  __c30_signature
-                  0x0003d0          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fpack.epeo)
+                  0x0003e8          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(atanf.epeo)
  __c30_signature
-                  0x0003d6          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack.epeo)
+                  0x0003ee          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(divsf3.epeo)
  __c30_signature
-                  0x0003dc          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
+                  0x0003f4          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(errno.epeo)
  __c30_signature
-                  0x0003e2          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(futil.epeo)
+                  0x0003fa          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(feqltle.epeo)
  __c30_signature
-                  0x0003e8          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(mulsf3.epeo)
+                  0x000400          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fixsfsi.epeo)
  __c30_signature
-                  0x0003ee          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatdisf.epeo)
+                  0x000406          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatsisf.epeo)
  __c30_signature
-                  0x0003f4          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
+                  0x00040c          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fpack.epeo)
+ __c30_signature
+                  0x000412          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack.epeo)
+ __c30_signature
+                  0x000418          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(funpack2.epeo)
+ __c30_signature
+                  0x00041e          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(futil.epeo)
+ __c30_signature
+                  0x000424          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(mulsf3.epeo)
+ __c30_signature
+                  0x00042a          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(sqrtf.epeo)
+ __c30_signature
+                  0x000430          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(asinacosf.epeo)
+ __c30_signature
+                  0x000436          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fcompare.epeo)
+ __c30_signature
+                  0x00043c          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(fgtge.epeo)
+ __c30_signature
+                  0x000442          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatdisf.epeo)
+ __c30_signature
+                  0x000448          0x6 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(floatundisf.epeo)
 
-.nbss               0x1000         0x62
- .nbss              0x1000         0x3c build/C30_dsPIC33FJ256GP710A/production/main.o
+.nbss               0x1000         0x6c
+ .nbss              0x1000         0x4c build/C30_dsPIC33FJ256GP710A/production/main.o
                     0x1000                  _magStringX
                     0x1014                  _magStringY
                     0x1028                  _magStringZ
- .nbss              0x103c         0x26 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
-                    0x103c                  _calibrated_values
-                    0x1048                  _buff
-                    0x105c                  _offset_gyro
+                    0x103c                  _euler
+                    0x1048                  _delay_less
+                    0x104a                  _init_converge_counter
+ .nbss              0x104c         0x20 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+                    0x104c                  _calibrated_values
+                    0x1058                  _buff
 
-.ndata              0x1062          0xc
- .ndata             0x1062          0xc build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
-                    0x1062                  _offset_acc
-                    0x1068                  _offset_mag
+.ndata              0x106c         0x12
+ .ndata             0x106c         0x12 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+                    0x106c                  _offset_acc
+                    0x1072                  _offset_gyro
+                    0x1078                  _offset_mag
 
-.nbss               0x106e          0x4
- .nbss              0x106e          0x4 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
-                    0x106e                  _samplingFlag
-                    0x1070                  _calibrate_gyro_flag
+.nbss               0x107e          0xc
+ .nbss              0x107e          0xc build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
+                    0x107e                  _q1
+                    0x1082                  _q2
+                    0x1086                  _q3
 
-.ndata              0x1072          0x4
- .ndata             0x1072          0x4 build/C30_dsPIC33FJ256GP710A/production/main.o
-                    0x1072                  _LF
-                    0x1073                  _CR
-                    0x1074                  _MAG
+.ndata              0x108a          0xa
+ .ndata             0x108a          0xa build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
+                    0x108a                  _beta
+                    0x108e                  _q0
+                    0x1092                  _instability_fix
+
+.nbss               0x1094          0x4
+ .nbss              0x1094          0x4 build/C30_dsPIC33FJ256GP710A/production/interrupts.o
+                    0x1094                  _sendMagwickFlag
+                    0x1096                  _calibrate_gyro_flag
+
+.ndata              0x1098          0x4
+ .ndata             0x1098          0x4 build/C30_dsPIC33FJ256GP710A/production/main.o
+                    0x1098                  _LF
+                    0x1099                  _CR
+                    0x109a                  _MAG
+
+.nbss               0x109c          0x2
+ .nbss              0x109c          0x2 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(errno.epeo)
+                    0x109c                  _errno
 
 .config_GCP       0x0157fa          0x2
  .config_GCP      0x0157fa          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
@@ -1929,46 +2071,52 @@ __c30_signature
  .config_JTAGEN
                   0x0157f0          0x2 build/C30_dsPIC33FJ256GP710A/production/configuration_bits.o
 
-.const              0x86d2         0x68 load address 0x0006d2  
- .const             0x86d2         0x34 build/C30_dsPIC33FJ256GP710A/production/user.o
- .const             0x8706         0x24 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
- .const             0x872a         0x10 build/C30_dsPIC33FJ256GP710A/production/main.o
+.const              0x8950         0x68 load address 0x000950  
+ .const             0x8950         0x34 build/C30_dsPIC33FJ256GP710A/production/user.o
+ .const             0x8984         0x24 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+ .const             0x89a8         0x10 build/C30_dsPIC33FJ256GP710A/production/main.o
 
-.text             0x00073a        0x928
- .text            0x00073a        0x5c8 build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
-                  0x00073a                  _I2C1_write_byte
-                  0x00079c                  _I2C1_read_byte
-                  0x000828                  _I2C1_read_bytes
-                  0x0008e4                  _initMPU9150
-                  0x000918                  _get9dof
-                  0x00092e                  _getAccGyro
-                  0x000940                  _getMag
-                  0x000968                  _translateMeasurements
-                  0x000b76                  _calibrateGyro
-                  0x000c0e                  _transformation
- .text            0x000d02        0x31c build/C30_dsPIC33FJ256GP710A/production/user.o
-                  0x000d02                  _InitApp
-                  0x000d32                  _InitIO
-                  0x000d46                  _MapPins
-                  0x000d88                  _InitTimer
-                  0x000db0                  _initUART1
-                  0x000e06                  _intiI2C1
-                  0x000e1a                  _print_line_uart1
-                  0x000e6e                  _print_uart1
-                  0x000ea2                  _print_string
-                  0x000eca                  _send_9dof_to_PC
-                  0x000f3e                  _floatToLong
-                  0x000f5c                  _test_mpu9150
- .text            0x00101e         0x44 build/C30_dsPIC33FJ256GP710A/production/main.o
-                  0x00101e                  _main
+.text             0x0009b8       0x2524
+ .text            0x0009b8       0x1968 build/C30_dsPIC33FJ256GP710A/production/MadgwickAHRS.o
+                  0x0009b8                  _MadgwickAHRSupdate
+                  0x001afa                  _MadgwickAHRSupdateIMU
+                  0x002230                  _invSqrt
+ .text            0x002320        0x5ca build/C30_dsPIC33FJ256GP710A/production/mpu9150.o
+                  0x002320                  _I2C1_write_byte
+                  0x002382                  _I2C1_read_byte
+                  0x00240e                  _I2C1_read_bytes
+                  0x0024ca                  _initMPU9150
+                  0x0024fe                  _get9dof
+                  0x002514                  _getAccGyro
+                  0x002526                  _getMag
+                  0x00254e                  _translateMeasurements
+                  0x00275c                  _calibrateGyro
+                  0x0027f6                  _transformation
+ .text            0x0028ea        0x4c2 build/C30_dsPIC33FJ256GP710A/production/user.o
+                  0x0028ea                  _InitApp
+                  0x00291a                  _InitIO
+                  0x00292e                  _MapPins
+                  0x002970                  _InitTimer
+                  0x002998                  _initUART1
+                  0x0029ee                  _intiI2C1
+                  0x002a02                  _print_line_uart1
+                  0x002a56                  _print_uart1
+                  0x002a8a                  _print_string
+                  0x002ab2                  _send_floats_to_PC
+                  0x002b2a                  _floatToLong
+                  0x002b48                  _test_mpu9150
+                  0x002c0a                  _rad2deg
+                  0x002c28                  _quat_2_euler
+ .text            0x002dac        0x130 build/C30_dsPIC33FJ256GP710A/production/main.o
+                  0x002dac                  _main
 
-.dinit            0x001062         0x2c
- .dinit           0x001062         0x2c data_init
+.dinit            0x002edc         0x4a
+ .dinit           0x002edc         0x4a data_init
 
-.init.delay32     0x00108e         0x1c
- .init.delay32    0x00108e         0x1c d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                  0x00108e                  ___delay32
+.init.delay32     0x002f26         0x1c
+ .init.delay32    0x002f26         0x1c d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x002f26                  ___delay32
 
-.text             0x0010aa          0xe
- .text            0x0010aa          0xe build/C30_dsPIC33FJ256GP710A/production/system.o
-                  0x0010aa                  _ConfigureOscillator
+.text             0x002f42          0xe
+ .text            0x002f42          0xe build/C30_dsPIC33FJ256GP710A/production/system.o
+                  0x002f42                  _ConfigureOscillator

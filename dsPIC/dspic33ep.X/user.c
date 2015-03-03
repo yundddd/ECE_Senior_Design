@@ -18,11 +18,12 @@
 #include "user.h"            /* variables/params used by user.c               */
 #include <i2c.h>
 #include "mpu9150.h"
-
+#include <math.h>
 #define SYS_FREQ        140000000L
 #define FCY             SYS_FREQ/2
 #define I2C_BRG(freq) (FCY/freq-FCY/1111111)-1
 #include <libpic30.h>
+#define M_PI 3.14159265358979323846
 /******************************************************************************/
 /* User Functions                                                             */
 /******************************************************************************/
@@ -184,17 +185,17 @@ void print_uart1(char* message, int len) {
 void print_string(char* message) {//print until null
     while (*message) {
         U1TXREG = *(message++);
-       // U1TXREG=0x31;
+        // U1TXREG=0x31;
 
         while (U1STAbits.UTXBF); //wait until stop bit
     }
 }
 
-void send_9dof_to_PC(float *measurements) {
+void send_floats_to_PC(float *measurements, int num) {
     int i;
     unsigned char temp;
     long templong;
-    for (i = 0; i < 9; i++) {
+    for (i = 0; i < num; i++) {
         templong = floatToLong(measurements++);
         temp = (templong >> 24)&0xFF;
         print_uart1((char *) &temp, 1);
@@ -274,4 +275,18 @@ void test_mpu9150(void) {
      print_uart1(&temp, 1);
      temp = GZ & 0xFF;
      print_uart1(&temp, 1);*/
+}
+
+float rad2deg(float r) {
+    return r * 180.0f / M_PI;
+}
+
+void quat_2_euler(float q[4], float e[3]) {
+    float sqw = q[0] * q[0];
+    float sqx = q[1] * q[1];
+    float sqy = q[2] * q[2];
+    float sqz = q[3] * q[3];
+    e[0] = atan2f(2.f * (q[1] * q[2] + q[3] * q[0]), sqx - sqy - sqz + sqw);
+    e[1] = asinf(-2.f * (q[1] * q[3] - q[2] * q[0]));
+    e[2] = atan2f(2.f * (q[2] * q[3] + q[1] * q[0]), -sqx - sqy + sqz + sqw);
 }
