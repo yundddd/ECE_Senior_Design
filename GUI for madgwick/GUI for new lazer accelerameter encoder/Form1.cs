@@ -531,8 +531,8 @@ namespace GUI_for_new_lazer_accelerameter_encoder
 
             accPane.XAxis.Scale.Min = 0;
             accPane.XAxis.Scale.Max = 10;
-            accPane.XAxis.Scale.MinorStep = 30;
-            accPane.XAxis.Scale.MajorStep = 30;
+            accPane.XAxis.Scale.MinorStep = 1500;
+            accPane.XAxis.Scale.MajorStep = 1500;
             zedGraphControlAcc.AxisChange();
 
             gyroPane.XAxis.Scale.Min = 0;
@@ -674,8 +674,8 @@ namespace GUI_for_new_lazer_accelerameter_encoder
             if (i > accScale.Max - accScale.MajorStep)
             {
                 accScale.Max = i + accScale.MajorStep;
-                accScale.Min = accScale.Max - 100.0;
-                gryoScale.Max = i + gryoScale.MajorStep;
+                accScale.Min = accScale.Max - 2000.0;
+             /*   gryoScale.Max = i + gryoScale.MajorStep;
                 gryoScale.Min = gryoScale.Max - 100.0;
                 magScale.Max = i + magScale.MajorStep;
                 magScale.Min = magScale.Max - 100.0;
@@ -688,47 +688,47 @@ namespace GUI_for_new_lazer_accelerameter_encoder
                 compassScale.Max = i + compassScale.MajorStep;
                 compassScale.Min = compassScale.Max - 100.0;
 
-                zedGraphControlAcc.AxisChange();
-                zedGraphControlGyro.AxisChange();
-                zedGraphControlMag.AxisChange();
-                zedGraphControlPitch.AxisChange();
-                zedGraphControlRoll.AxisChange();
-                zedGraphControlYaw.AxisChange();
-                zedGraphControlCompass.AxisChange();
+                zedGraphControlAcc.AxisChange();*/
+             //   zedGraphControlGyro.AxisChange();
+              //  zedGraphControlMag.AxisChange();
+              //  zedGraphControlPitch.AxisChange();
+              //  zedGraphControlRoll.AxisChange();
+              //  zedGraphControlYaw.AxisChange();
+              //  zedGraphControlCompass.AxisChange();
             }
 
             zedGraphControlAcc.Invalidate();
-            zedGraphControlGyro.Invalidate();
-            zedGraphControlMag.Invalidate();
-            zedGraphControlPitch.Invalidate();
-            zedGraphControlRoll.Invalidate();
-            zedGraphControlYaw.Invalidate();
-            zedGraphControlCompass.Validate();
+          //  zedGraphControlGyro.Invalidate();
+          //  zedGraphControlMag.Invalidate();
+          //  zedGraphControlPitch.Invalidate();
+           // zedGraphControlRoll.Invalidate();
+           // zedGraphControlYaw.Invalidate();
+           // zedGraphControlCompass.Validate();
 
            
             pictureBoxPitch.BeginInvoke(new MethodInvoker(delegate()
             {
                 labelYaw.Text = String.Format("{0,-7:+0.000;-0.000  }", ax); 
               //  labelAccx.Text = String.Format("{0,-7:+0.00;-0.00  }", madgwickAHRS.Beta);
-                /*    pictureBoxPitch.Image = (Image)(RotateImage(indicatorPitch, (float)KalmanPitch));
-                    pictureBoxRoll.Image = (Image)(RotateImage(indicatorRoll, (float)KalmanRoll));
-                    trackBarAccPErr.Value = (int)accelPitchError * 10;
-                    trackBarAccRErr.Value = (int)accelRollError * 10;
-                    trackBarGyroPErr.Value = (int)gyroPitchError * 10;
-                    trackBarGyroRErr.Value = (int)gyroRollError * 10;
-                    labelAccRErr.Text = accelRollError.ToString(); labelAccPErr.Text = accelPitchError.ToString(); labelGyroPErr.Text = gyroPitchError.ToString(); labelGyroRErr.Text = gyroRollError.ToString(); labelQ.Text = Qvalue.ToString();
+                pictureBoxPitch.Image = (Image)(RotateImage(indicatorPitch, (float)ay));
+                pictureBoxRoll.Image = (Image)(RotateImage(indicatorRoll, (float)az));
+                /*      trackBarAccPErr.Value = (int)accelPitchError * 10;
+                     trackBarAccRErr.Value = (int)accelRollError * 10;
+                     trackBarGyroPErr.Value = (int)gyroPitchError * 10;
+                     trackBarGyroRErr.Value = (int)gyroRollError * 10;
+                     labelAccRErr.Text = accelRollError.ToString(); labelAccPErr.Text = accelPitchError.ToString(); labelGyroPErr.Text = gyroPitchError.ToString(); labelGyroRErr.Text = gyroRollError.ToString(); labelQ.Text = Qvalue.ToString();
    
-                labelAccx.Text = String.Format("{0,-7:+0.00;-0.00  }", ax);
-                labelAccy.Text = String.Format("{0,-7:+0.00;-0.00  }", ay);
-                labelAccz.Text = String.Format("{0,-7:+0.00;-0.00  }", az);
-                labelGryx.Text = String.Format("{0,-7:+0.00;-0.00  }", grx);
-                labelGryy.Text = String.Format("{0,-7:+0.00;-0.00  }", gry);
-                labelGryz.Text = String.Format("{0,-7:+0.00;-0.00  }", grz);
-                //       labelMagx.Text = String.Format("{0,-7:+0.00;-0.00  }", mx);
-                //       labelMagy.Text = String.Format("{0,-7:+0.00;-0.00  }", my);
-                //       labelMagz.Text = String.Format("{0,-7:+0.00;-0.00  }", mz);
-                //      labelPitch.Text = String.Format("{0,-7:+0.00;-0.00  }", KalmanPitch);
-                //       labelRoll.Text = String.Format("{0,-7:+0.00;-0.00  }", KalmanRoll);*/
+                 labelAccx.Text = String.Format("{0,-7:+0.00;-0.00  }", ax);
+                 labelAccy.Text = String.Format("{0,-7:+0.00;-0.00  }", ay);
+                 labelAccz.Text = String.Format("{0,-7:+0.00;-0.00  }", az);
+                 labelGryx.Text = String.Format("{0,-7:+0.00;-0.00  }", grx);
+                 labelGryy.Text = String.Format("{0,-7:+0.00;-0.00  }", gry);
+                 labelGryz.Text = String.Format("{0,-7:+0.00;-0.00  }", grz);
+                 //       labelMagx.Text = String.Format("{0,-7:+0.00;-0.00  }", mx);
+                 //       labelMagy.Text = String.Format("{0,-7:+0.00;-0.00  }", my);
+                 //       labelMagz.Text = String.Format("{0,-7:+0.00;-0.00  }", mz);
+                 //      labelPitch.Text = String.Format("{0,-7:+0.00;-0.00  }", KalmanPitch);
+                 //       labelRoll.Text = String.Format("{0,-7:+0.00;-0.00  }", KalmanRoll);*/
               //  double siga=Math.Sqrt(ax*ax+ay*ay+az*az);
              //   if (siga > 1.2 || siga < 0.98) { labelYaw.Text = String.Format("{0,-7:+0.00;-0.00  }", siga); }
                 

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GUI for new lazer accelerameter encoder.exe" size="522240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GUI for new lazer accelerameter encoder.exe" size="521728">
       <assemblyIdentity name="GUI for new lazer accelerameter encoder" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>btMG21YWlEBgPc87SDTqxRcb1ko=</dsig:DigestValue>
+        <dsig:DigestValue>iP9MpYanHMD7XPOTJFOnA84nZ5k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
