@@ -4,8 +4,9 @@ Assitive Eye tracking headset for 2015 ECE Senior Design Class<br>
 Primary test results (static error):<br>
 yaw: 0.003 deg/s drift<br>
 pitch: +- 0.15 deg<br>
-roll: +-0.1 deg<br>
-
+roll: +-0.1 deg<br><br>
+Visualization video:<br>
+https://www.youtube.com/watch?v=3Vu8ZDpfcpM
 
 <h1>Package description:</h1>
 com.camera: Camera interface<br>
