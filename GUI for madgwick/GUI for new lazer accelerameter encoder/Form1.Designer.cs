@@ -168,7 +168,7 @@
             this.buttonSaveEncoderData.Name = "buttonSaveEncoderData";
             this.buttonSaveEncoderData.Size = new System.Drawing.Size(114, 46);
             this.buttonSaveEncoderData.TabIndex = 23;
-            this.buttonSaveEncoderData.Text = "Export";
+            this.buttonSaveEncoderData.Text = "Take control";
             this.buttonSaveEncoderData.UseVisualStyleBackColor = true;
             this.buttonSaveEncoderData.Click += new System.EventHandler(this.buttonSaveEncoderData_Click);
             // 

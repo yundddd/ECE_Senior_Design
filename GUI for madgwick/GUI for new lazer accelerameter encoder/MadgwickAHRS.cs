@@ -12,7 +12,8 @@ namespace GUI_for_new_lazer_accelerameter_encoder
         /// Gets or sets the sample period.
         /// </summary>
         public float SamplePeriod { get; set; }
-
+        public int defaultx;
+        public int defaulty;
         /// <summary>
         /// Gets or sets the algorithm gain beta.
         /// </summary>

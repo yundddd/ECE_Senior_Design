@@ -54,23 +54,14 @@ namespace GUI_for_new_lazer_accelerameter_encoder
         double gyroPitchSpeedMeasurementNoise = 0.00114;
         double gyroRollSpeedProcessNoise = .001538;
         double gyroRollSpeedMeasurementNoise = 0.00114;
-        double gyroPitchProcessNoise = 0;
-        double gyroPitchMeasurementNoise = 0;
-        double gyroRollProcessNoise = 0;
-        double gyroRollMeasurementNoise = 0;
+       
 
         double KalmanPitch = 0;
         double KalmanRoll = 0;
         double KalmanYaw = 0;
         double accPitch = 0;
         double accRoll = 0;
-        double gyroPitch = 0;
-        double gyroRoll = 0;
-        double lpAccPitch = 0;
-        double lpAccRoll = 0;
-        double lpaccx = 0;
-        double lpaccy = 0;
-        double lpaccz = 0;
+      
 
         double accelPitchError = 0;
         double accelRollError = 0;
@@ -97,6 +88,11 @@ namespace GUI_for_new_lazer_accelerameter_encoder
         byte[] Calibrate_gyro_Command = { 0x33 };
         byte[] stopStreamCommand = { 0x38 };
 
+        int screenX_init, screenY_init,filterX_init,filterY_init;
+        Boolean mouse_control = false;
+        int magnifier = 100;
+        int lowpassX, lowpassY;
+        double lowpassBeta = 0.45;
 
         public Form1()
         {
@@ -181,70 +177,7 @@ namespace GUI_for_new_lazer_accelerameter_encoder
             R[0, 0] = Rvalue; R[1, 1] = Rvalue; R[2, 2] = Rvalue; R[3, 3] = Rvalue; R[4, 4] = Rvalue; R[5, 5] = Rvalue;
         }
 
-        public void kalmanUpdate(double accx, double accy, double accz, double gyrox, double gyroy)
-        {
-            accPitch = Math.Atan2(-accx, Math.Sqrt(accy * accy + accz * accz)) / Math.PI * 180;
-            accRoll = Math.Atan2(accy, accz) / Math.PI * 180;
-            sigmaAcc = Math.Sqrt(accx * accx + accy * accy + accz * accz);
-            lpAccPitch = 0.95 * lpAccPitch + 0.05 * accPitch;
-            lpAccRoll = 0.95 * lpAccRoll + 0.05 * accRoll;
-            //gyroPitch = (gyroPitch + gyroy * dt) * 0.99 + 0.01 * accPitch;
-            //gyroRoll = (gyroRoll + (gyrox) * dt);
-            Q[0, 0] = accelPitchProcessNoise + dt * dt / 2;
-            R[0, 0] = accelPitchMeasurementNoise + 300 * Math.Pow(Math.Abs(accCenter - sigmaAcc), 2);
-            R[2, 2] = accelRollMeasurementNoise + 300 * Math.Pow(Math.Abs(accCenter - sigmaAcc), 2);
-            Q[1, 1] = (dt * dt) / 2 + gyroPitchSpeedMeasurementNoise;
-            Q[2, 2] = accelRollProcessNoise + dt * dt / 2;
-            Q[3, 3] = (dt * dt) / 2 + gyroRollSpeedMeasurementNoise;
-
-            if (sigmaAcc > 1.02 || sigmaAcc < 0.98)
-            {
-                accPitch = 0.9 * lpAccPitch + 0.1 * accPitch;
-                accRoll = 0.85 * lpAccRoll + 0.15 * accRoll;
-            }
-
-            // Console.WriteLine(accPd - Math.Abs(gyrox));
-            // gyroPitch = KalmanPitch + dt * gyroy;//calculate pitch and roll from gyro
-            //  gyroRoll = KalmanRoll + dt * gyrox;
-            // Console.WriteLine(gyroPitch + "    " + KalmanPitch);
-            /*zn[0, 0] = accPitch; zn[1, 0] = gyroPitch; 
-            zn[2, 0] = gyroy; zn[3, 0] = accRoll;
-            zn[4, 0] = gyroRoll; zn[5,0] = gyrox;
-             */
-            zn[0, 0] = accPitch; zn[1, 0] = gyroy;
-            zn[2, 0] = accRoll;
-            zn[3, 0] = gyrox;
-
-            xpredict = A * xprevious;
-
-
-            Ppredicted = A * Pprevious * Matrix.Transpose(A) + Q;
-            y = zn - H * xpredict;
-
-
-            S = H * Ppredicted * Matrix.Transpose(H) + R;
-
-
-
-            K = (Ppredicted * Matrix.Transpose(H)) * S.Invert();
-
-            xnow = xpredict + K * y;
-
-            Pnow = (I - K * H) * Ppredicted;
-
-            xprevious = xnow;
-            Pprevious = Pnow;
-            KalmanRoll = xnow[0, 0];
-            //KalmanRoll = KalmanPitch;
-            //KalmanPitch = accPitch;
-            KalmanPitch = xnow[3, 0];
-            KalmanYaw = xnow[3, 0];
-            //KalmanPitchError = xnow[2, 0];
-            //  KalmanRollError = Pnow[3,3];
-            // KalmanRoll = Pnow[2, 2];
-            //Console.WriteLine(Pnow);
-        }
-
+       
         private void refreshPorts()//get names of available ports
         {
             string[] nameArray = null;//store port names
@@ -375,10 +308,16 @@ namespace GUI_for_new_lazer_accelerameter_encoder
 
         private void buttonSaveEncoderData_Click(object sender, EventArgs e)
         {
-            saveFileDialog.ShowDialog();
-            TextWriter tw = new StreamWriter(saveFileDialog.FileName);
-            tw.Write(EncData.ToString());
-            tw.Close();
+            filterX_init = (int)madgwickAHRS.defaultx;
+            filterY_init = (int)madgwickAHRS.defaulty;
+            if (!mouse_control) { MoveCursorToCenter(); mouse_control = true; }
+            else { mouse_control = false; }
+           
+            return;
+           // saveFileDialog.ShowDialog();
+          //  TextWriter tw = new StreamWriter(saveFileDialog.FileName);
+          //  tw.Write(EncData.ToString());
+          //  tw.Close();
         }
 
 
@@ -619,92 +558,49 @@ namespace GUI_for_new_lazer_accelerameter_encoder
             listCompass = Compasscurve.Points as IPointListEdit;
         }
 
-
+        private void MoveCursorToCenter()
+        {
+            // Set the Current cursor, move the cursor's Position, 
+            // and set its clipping rectangle to the form.  
+            Rectangle bounds=Screen.FromControl(this).Bounds;
+            this.Cursor = new Cursor(Cursor.Current.Handle);
+            screenX_init = bounds.Width / 2;
+            screenY_init = bounds.Height / 2;
+            Cursor.Position = new Point(bounds.Width / 2, bounds.Height / 2);
+            //Cursor.Clip = new Rectangle(this.Location, this.Size);
+        }
         public void updateZedGraph(int i, double ax, double ay, double az, double grx, double gry, double grz, double mx, double my, double mz, double Pitch, double Roll, double yaw)
         {
-            /*      lpaccx = 0.99 * lpaccx + 0.01 * ax;
-               lpaccy = 0.99 * lpaccy + 0.01 * ay;
-               lpaccz = 0.99 * lpaccz + 0.01 * az;
-               lpaccPitch = Math.Atan2(-lpaccx, Math.Sqrt(lpaccy * lpaccy + lpaccz * lpaccz)) / Math.PI * 180;
-               lpaccRoll = Math.Atan2(lpaccy, lpaccz) / Math.PI * 180;
 
-              
-
-
-             
-            
-
-                     kalmanX.updateRmeasure(sigmaAcc, gry);
-                     kalmanY.updateRmeasure(sigmaAcc, grx);
-
-                     aPitch = kalmanX.arduinoKalmanUpdate(accPitch, gry, dt, sigmaAcc);
-                     aRoll = kalmanY.arduinoKalmanUpdate(accRoll, grx, dt, sigmaAcc);//post C# proceessing...red line has better performance
-         */
-            //Console.WriteLine(madgwickAHRS.MadgPitch);
-
-            accPitch = Math.Atan2(-ax, Math.Sqrt(ay * ay + az * az)) / Math.PI * 180;
-            accRoll = Math.Atan2(ay, az) / Math.PI * 180;
           
-            lpAccPitch = 0.95 * lpAccPitch + 0.05 * accPitch;
-            lpAccRoll = 0.95 * lpAccRoll + 0.05 * accRoll;
             i = i * 50;
            
 //
+            ay = -ay;
+            ax = -ax;
+            listAccx.Add(i, ax);//yaw
+            listAccy.Add(i, ay);//roll
+            listAccz.Add(i, az);//picth
+            madgwickAHRS.defaultx = (int)ax;
+            madgwickAHRS.defaulty = (int)az;
+            lowpassX = (int)(lowpassBeta * lowpassX +(ax - filterX_init) * magnifier * (1 - lowpassBeta));
+            lowpassY = (int)(lowpassBeta * lowpassY + (az - filterY_init) * magnifier * (1 - lowpassBeta));
+            if (mouse_control) {
 
-            listAccx.Add(i, ax);
-            listAccy.Add(i, ay);
-            listAccz.Add(i, az);
-            listGryox.Add(i, grx);
-            listGryoy.Add(i, gry);
-            listGryoz.Add(i, grz);
-            listMagx.Add(i, mx);
-            listMagy.Add(i, my);
-            listMagz.Add(i, mz);
-            listPostpitch.Add(i, madgwickAHRS.MadgPitch);//blue
-            listPostroll.Add(i, madgwickAHRS.MadgRoll);
-            listArduinopitch.Add(i, lpAccPitch);//red
-            listAruduinoroll.Add(i, lpAccRoll);
-            listPostyaw.Add(i, madgwickAHRS.MadgYaw);
+                Cursor.Position = new Point((lowpassX + screenX_init), (lowpassY + screenY_init));
+            }
 
-          //  listCompass.Add(i, heading);
 
-            // Keep the X scale at a rolling 30 second interval, with one
-            // major step between the max X value and the end of the axis
 
             if (i > accScale.Max - accScale.MajorStep)
             {
                 accScale.Max = i + accScale.MajorStep;
                 accScale.Min = accScale.Max - 2000.0;
-             /*   gryoScale.Max = i + gryoScale.MajorStep;
-                gryoScale.Min = gryoScale.Max - 100.0;
-                magScale.Max = i + magScale.MajorStep;
-                magScale.Min = magScale.Max - 100.0;
-                pitchScale.Max = i + pitchScale.MajorStep;
-                pitchScale.Min = pitchScale.Max - 100.0;
-                yawScale.Max = i + yawScale.MajorStep;
-                yawScale.Min = yawScale.Max - 100.0;
-                rollScale.Max = i + rollScale.MajorStep;
-                rollScale.Min = rollScale.Max - 100.0;
-                compassScale.Max = i + compassScale.MajorStep;
-                compassScale.Min = compassScale.Max - 100.0;
-
-                zedGraphControlAcc.AxisChange();*/
-             //   zedGraphControlGyro.AxisChange();
-              //  zedGraphControlMag.AxisChange();
-              //  zedGraphControlPitch.AxisChange();
-              //  zedGraphControlRoll.AxisChange();
-              //  zedGraphControlYaw.AxisChange();
-              //  zedGraphControlCompass.AxisChange();
+           
             }
 
             zedGraphControlAcc.Invalidate();
-          //  zedGraphControlGyro.Invalidate();
-          //  zedGraphControlMag.Invalidate();
-          //  zedGraphControlPitch.Invalidate();
-           // zedGraphControlRoll.Invalidate();
-           // zedGraphControlYaw.Invalidate();
-           // zedGraphControlCompass.Validate();
-
+     
            
             pictureBoxPitch.BeginInvoke(new MethodInvoker(delegate()
             {
@@ -712,25 +608,7 @@ namespace GUI_for_new_lazer_accelerameter_encoder
               //  labelAccx.Text = String.Format("{0,-7:+0.00;-0.00  }", madgwickAHRS.Beta);
                 pictureBoxPitch.Image = (Image)(RotateImage(indicatorPitch, (float)ay));
                 pictureBoxRoll.Image = (Image)(RotateImage(indicatorRoll, (float)az));
-                /*      trackBarAccPErr.Value = (int)accelPitchError * 10;
-                     trackBarAccRErr.Value = (int)accelRollError * 10;
-                     trackBarGyroPErr.Value = (int)gyroPitchError * 10;
-                     trackBarGyroRErr.Value = (int)gyroRollError * 10;
-                     labelAccRErr.Text = accelRollError.ToString(); labelAccPErr.Text = accelPitchError.ToString(); labelGyroPErr.Text = gyroPitchError.ToString(); labelGyroRErr.Text = gyroRollError.ToString(); labelQ.Text = Qvalue.ToString();
-   
-                 labelAccx.Text = String.Format("{0,-7:+0.00;-0.00  }", ax);
-                 labelAccy.Text = String.Format("{0,-7:+0.00;-0.00  }", ay);
-                 labelAccz.Text = String.Format("{0,-7:+0.00;-0.00  }", az);
-                 labelGryx.Text = String.Format("{0,-7:+0.00;-0.00  }", grx);
-                 labelGryy.Text = String.Format("{0,-7:+0.00;-0.00  }", gry);
-                 labelGryz.Text = String.Format("{0,-7:+0.00;-0.00  }", grz);
-                 //       labelMagx.Text = String.Format("{0,-7:+0.00;-0.00  }", mx);
-                 //       labelMagy.Text = String.Format("{0,-7:+0.00;-0.00  }", my);
-                 //       labelMagz.Text = String.Format("{0,-7:+0.00;-0.00  }", mz);
-                 //      labelPitch.Text = String.Format("{0,-7:+0.00;-0.00  }", KalmanPitch);
-                 //       labelRoll.Text = String.Format("{0,-7:+0.00;-0.00  }", KalmanRoll);*/
-              //  double siga=Math.Sqrt(ax*ax+ay*ay+az*az);
-             //   if (siga > 1.2 || siga < 0.98) { labelYaw.Text = String.Format("{0,-7:+0.00;-0.00  }", siga); }
+            
                 
 
             }));
