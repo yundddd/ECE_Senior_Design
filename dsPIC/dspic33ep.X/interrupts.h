@@ -16,6 +16,7 @@ extern "C" {
     //controls
     extern volatile unsigned int sendMagwickFlag;
     extern volatile unsigned int calibrate_gyro_flag;
+    extern volatile unsigned int calibrate_yaw_flag;
 
 #ifdef	__cplusplus
 }

@@ -21,6 +21,7 @@
 float calibrated_values[3];
 
 
+
 unsigned char buff[20]; //buffer to hold raw bytes
 int offset_acc[3] = {-327, 163, 0};
 int offset_gyro[3] = {0x0026,0x000B,0xFFEC};

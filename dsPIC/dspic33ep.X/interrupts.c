@@ -124,16 +124,25 @@
 /******************************************************************************/
 volatile unsigned int sendMagwickFlag = 0;
 volatile unsigned int calibrate_gyro_flag = 0;
+volatile unsigned int calibrate_yaw_flag=0;
+#define SEND 0x31
+#define CALIBRATE_GYRO 0x33
+#define CALIBRATE_YAW 0x32
+
+
+
 
 /* TODO Add interrupt routine code here. */
 void __attribute__((__interrupt__, no_auto_psv)) _U1RXInterrupt(void) {
     unsigned char temp = U1RXREG; //read the byte
     // U1TXREG = temp; // Transmit one character back
     // LATBbits.LATB15 = ~LATBbits.LATB15;
-    if (temp == 0x31) {
+    if (temp == SEND) {
         sendMagwickFlag = 1;
-    } else if (temp == 0x33) {
+    } else if (temp == CALIBRATE_GYRO) {
         calibrate_gyro_flag = 1;
+    }else if(temp == CALIBRATE_YAW){
+        calibrate_yaw_flag=1;
     }
     IFS0bits.U1RXIF = 0; // Clear RX Interrupt flag
 }

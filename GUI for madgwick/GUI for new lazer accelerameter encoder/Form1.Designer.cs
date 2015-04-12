@@ -87,6 +87,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.labelQ = new System.Windows.Forms.Label();
             this.button_calibrate_gyro = new System.Windows.Forms.Button();
+            this.button_reset_yaw = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -659,12 +660,23 @@
             this.button_calibrate_gyro.UseVisualStyleBackColor = true;
             this.button_calibrate_gyro.Click += new System.EventHandler(this.button_calibrate_gyro_Click);
             // 
+            // button_reset_yaw
+            // 
+            this.button_reset_yaw.Location = new System.Drawing.Point(360, 118);
+            this.button_reset_yaw.Name = "button_reset_yaw";
+            this.button_reset_yaw.Size = new System.Drawing.Size(111, 54);
+            this.button_reset_yaw.TabIndex = 77;
+            this.button_reset_yaw.Text = "Resest Yaw";
+            this.button_reset_yaw.UseVisualStyleBackColor = true;
+            this.button_reset_yaw.Click += new System.EventHandler(this.button_reset_yaw_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1589, 882);
+            this.Controls.Add(this.button_reset_yaw);
             this.Controls.Add(this.button_calibrate_gyro);
             this.Controls.Add(this.labelQ);
             this.Controls.Add(this.label12);
@@ -790,6 +802,7 @@
         private System.Windows.Forms.TabPage tabPage3;
         private ZedGraph.ZedGraphControl zedGraphControlCompass;
         private System.Windows.Forms.Button button_calibrate_gyro;
+        private System.Windows.Forms.Button button_reset_yaw;
     }
 }
 

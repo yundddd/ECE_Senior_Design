@@ -29,13 +29,13 @@ Command:
   build/C30_dsPIC33FJ256GP710A/debug/user.o \
   build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o \
   build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o \
-  -TC:\Users\Tim\AppData\Local\Temp\tmp0000231c.00 \
-  -TC:\Users\Tim\AppData\Local\Temp\tmp0000231c.01 \
-  -TC:\Users\Tim\AppData\Local\Temp\tmp0000231c.02 \
-  -TC:\Users\Tim\AppData\Local\Temp\tmp0000231c.03 \
-  -TC:\Users\Tim\AppData\Local\Temp\tmp0000231c.04 \
-  -TC:\Users\Tim\AppData\Local\Temp\tmp0000231c.05 \
-  -TC:\Users\Tim\AppData\Local\Temp\tmp0000231c.06 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001bc0.00 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001bc0.01 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001bc0.02 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001bc0.03 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001bc0.04 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001bc0.05 \
+  -TC:\Users\Tim\AppData\Local\Temp\tmp00001bc0.06 \
   --local-stack \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
@@ -84,7 +84,7 @@ d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(crt
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(data_init_extendedep.o)
                               d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(crt0_extendedep.o) (__data_init_extended)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                              build/C30_dsPIC33FJ256GP710A/debug/main.o (___delay32)
+                              build/C30_dsPIC33FJ256GP710A/debug/user.o (___delay32)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(addsf3.epeo)
                               build/C30_dsPIC33FJ256GP710A/debug/user.o (___subsf3)
 d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libm-elf.a(asinf.epeo)
@@ -132,13 +132,13 @@ Program Memory  [Origin = 0x200, Length = 0x155ec]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x750           0xaf8  (2808)
-.const                       0x950                0x68            0x9c  (156)
-.text                        0x9b8              0x2524          0x37b6  (14262)
-.dinit                      0x2edc                0x4a            0x6f  (111)
-.init.delay32               0x2f26                0x1c            0x2a  (42)
-.text                       0x2f42                 0xe            0x15  (21)
+.const                       0x950                0x58            0x84  (132)
+.text                        0x9a8              0x23f4          0x35ee  (13806)
+.dinit                      0x2d9c                0x4a            0x6f  (111)
+.init.delay32               0x2de6                0x1c            0x2a  (42)
+.text                       0x2e02                0x1c            0x2a  (42)
 
-                     Total program memory used (bytes):         0x43f8  (17400) 13%
+                     Total program memory used (bytes):         0x422d  (16941) 12%
 
 
 Data Memory  [Origin = 0x1000, Length = 0x4000]
@@ -271,51 +271,51 @@ External Symbols in Program Memory (by address):
                   0x0008ce                  ___gtsf2
                   0x0008d2                  ___floatdisf
                   0x0008f2                  ___floatundisf
-                  0x0009b8                  _MadgwickAHRSupdate
-                  0x001afa                  _MadgwickAHRSupdateIMU
-                  0x002230                  _invSqrt
-                  0x002320                  _I2C1_write_byte
-                  0x002382                  _I2C1_read_byte
-                  0x00240e                  _I2C1_read_bytes
-                  0x0024ca                  _initMPU9150
-                  0x0024fe                  _get9dof
-                  0x002514                  _getAccGyro
-                  0x002526                  _getMag
-                  0x00254e                  _translateMeasurements
-                  0x00275c                  _calibrateGyro
-                  0x0027f6                  _transformation
-                  0x0028ea                  _InitApp
-                  0x00291a                  _InitIO
-                  0x00292e                  _MapPins
-                  0x002970                  _InitTimer
-                  0x002998                  _initUART1
-                  0x0029ee                  _intiI2C1
-                  0x002a02                  _print_line_uart1
-                  0x002a56                  _print_uart1
-                  0x002a8a                  _print_string
-                  0x002ab2                  _send_floats_to_PC
-                  0x002b2a                  _floatToLong
-                  0x002b48                  _test_mpu9150
-                  0x002c0a                  _rad2deg
-                  0x002c28                  _quat_2_euler
-                  0x002dac                  _main
-                  0x002f26                  ___delay32
-                  0x002f42                  _ConfigureOscillator
+                  0x0009a8                  _MadgwickAHRSupdate
+                  0x001aea                  _MadgwickAHRSupdateIMU
+                  0x002220                  _invSqrt
+                  0x002310                  _I2C1_write_byte
+                  0x002372                  _I2C1_read_byte
+                  0x0023fe                  _I2C1_read_bytes
+                  0x0024ba                  _initMPU9150
+                  0x0024ee                  _get9dof
+                  0x002504                  _getAccGyro
+                  0x002516                  _getMag
+                  0x00253e                  _translateMeasurements
+                  0x00274c                  _calibrateGyro
+                  0x0027e6                  _transformation
+                  0x0028da                  _InitApp
+                  0x00290a                  _InitIO
+                  0x00291e                  _MapPins
+                  0x002960                  _InitTimer
+                  0x002988                  _initUART1
+                  0x0029de                  _intiI2C1
+                  0x0029f2                  _print_line_uart1
+                  0x002a46                  _print_uart1
+                  0x002a7a                  _print_string
+                  0x002aa2                  _send_floats_to_PC
+                  0x002b1a                  _floatToLong
+                  0x002b38                  _test_mpu9150
+                  0x002bfa                  _rad2deg
+                  0x002c18                  _quat_2_euler
+                  0x002de6                  ___delay32
+                  0x002e02                  _main
+                  0x002e10                  _ConfigureOscillator
 
 External Symbols in Program Memory (by name):
 
                   0x000334                  _AckI2C1
-                  0x002f42                  _ConfigureOscillator
-                  0x002382                  _I2C1_read_byte
-                  0x00240e                  _I2C1_read_bytes
-                  0x002320                  _I2C1_write_byte
+                  0x002e10                  _ConfigureOscillator
+                  0x002372                  _I2C1_read_byte
+                  0x0023fe                  _I2C1_read_bytes
+                  0x002310                  _I2C1_write_byte
                   0x00033e                  _IdleI2C1
-                  0x0028ea                  _InitApp
-                  0x00291a                  _InitIO
-                  0x002970                  _InitTimer
-                  0x0009b8                  _MadgwickAHRSupdate
-                  0x001afa                  _MadgwickAHRSupdateIMU
-                  0x00292e                  _MapPins
+                  0x0028da                  _InitApp
+                  0x00290a                  _InitIO
+                  0x002960                  _InitTimer
+                  0x0009a8                  _MadgwickAHRSupdate
+                  0x001aea                  _MadgwickAHRSupdateIMU
+                  0x00291e                  _MapPins
                   0x000362                  _MasterReadI2C1
                   0x000372                  _MasterWriteI2C1
                   0x00039a                  _NotAckI2C1
@@ -332,7 +332,7 @@ External Symbols in Program Memory (by name):
                   0x000310                  __StackError
                   0x0002d2                  __U1RXInterrupt
                   0x0003c0                  ___addsf3
-                  0x002f26                  ___delay32
+                  0x002de6                  ___delay32
                   0x000582                  ___divsf3
                   0x000606                  ___eqsf2
                   0x00060a                  ___fixsfsi
@@ -360,26 +360,26 @@ External Symbols in Program Memory (by name):
                   0x00047a                  _asinf
                   0x00047e                  _atan2f
                   0x0004b8                  _atanf
-                  0x00275c                  _calibrateGyro
-                  0x002b2a                  _floatToLong
-                  0x0024fe                  _get9dof
-                  0x002514                  _getAccGyro
-                  0x002526                  _getMag
-                  0x0024ca                  _initMPU9150
-                  0x002998                  _initUART1
-                  0x0029ee                  _intiI2C1
-                  0x002230                  _invSqrt
-                  0x002dac                  _main
-                  0x002a02                  _print_line_uart1
-                  0x002a8a                  _print_string
-                  0x002a56                  _print_uart1
-                  0x002c28                  _quat_2_euler
-                  0x002c0a                  _rad2deg
-                  0x002ab2                  _send_floats_to_PC
+                  0x00274c                  _calibrateGyro
+                  0x002b1a                  _floatToLong
+                  0x0024ee                  _get9dof
+                  0x002504                  _getAccGyro
+                  0x002516                  _getMag
+                  0x0024ba                  _initMPU9150
+                  0x002988                  _initUART1
+                  0x0029de                  _intiI2C1
+                  0x002220                  _invSqrt
+                  0x002e02                  _main
+                  0x0029f2                  _print_line_uart1
+                  0x002a7a                  _print_string
+                  0x002a46                  _print_uart1
+                  0x002c18                  _quat_2_euler
+                  0x002bfa                  _rad2deg
+                  0x002aa2                  _send_floats_to_PC
                   0x000760                  _sqrtf
-                  0x002b48                  _test_mpu9150
-                  0x0027f6                  _transformation
-                  0x00254e                  _translateMeasurements
+                  0x002b38                  _test_mpu9150
+                  0x0027e6                  _transformation
+                  0x00253e                  _translateMeasurements
 
 Memory Configuration
 
@@ -609,49 +609,49 @@ __FUID3
 .comment
  *(.comment)
 
-.debug_info       0x000000       0x3587
+.debug_info       0x000000       0x355e
  *(.debug_info)
  .debug_info      0x000000         0xad build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
  .debug_info      0x0000ad        0x32a build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
- .debug_info      0x0003d7        0x6aa build/C30_dsPIC33FJ256GP710A/debug/main.o
- .debug_info      0x000a81        0x180 build/C30_dsPIC33FJ256GP710A/debug/system.o
- .debug_info      0x000c01        0x38a build/C30_dsPIC33FJ256GP710A/debug/traps.o
- .debug_info      0x000f8b       0x166d build/C30_dsPIC33FJ256GP710A/debug/user.o
- .debug_info      0x0025f8        0x903 build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
- .debug_info      0x002efb        0x68c build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
+ .debug_info      0x0003d7        0x681 build/C30_dsPIC33FJ256GP710A/debug/main.o
+ .debug_info      0x000a58        0x180 build/C30_dsPIC33FJ256GP710A/debug/system.o
+ .debug_info      0x000bd8        0x38a build/C30_dsPIC33FJ256GP710A/debug/traps.o
+ .debug_info      0x000f62       0x166d build/C30_dsPIC33FJ256GP710A/debug/user.o
+ .debug_info      0x0025cf        0x903 build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
+ .debug_info      0x002ed2        0x68c build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev     0x000000        0x688
+.debug_abbrev     0x000000        0x67f
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0x1f build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
  .debug_abbrev    0x00001f         0xc1 build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
- .debug_abbrev    0x0000e0         0xfc build/C30_dsPIC33FJ256GP710A/debug/main.o
- .debug_abbrev    0x0001dc         0x4c build/C30_dsPIC33FJ256GP710A/debug/system.o
- .debug_abbrev    0x000228         0x7d build/C30_dsPIC33FJ256GP710A/debug/traps.o
- .debug_abbrev    0x0002a5        0x1cd build/C30_dsPIC33FJ256GP710A/debug/user.o
- .debug_abbrev    0x000472        0x13b build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
- .debug_abbrev    0x0005ad         0xdb build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
+ .debug_abbrev    0x0000e0         0xf3 build/C30_dsPIC33FJ256GP710A/debug/main.o
+ .debug_abbrev    0x0001d3         0x4c build/C30_dsPIC33FJ256GP710A/debug/system.o
+ .debug_abbrev    0x00021f         0x7d build/C30_dsPIC33FJ256GP710A/debug/traps.o
+ .debug_abbrev    0x00029c        0x1cd build/C30_dsPIC33FJ256GP710A/debug/user.o
+ .debug_abbrev    0x000469        0x13b build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
+ .debug_abbrev    0x0005a4         0xdb build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
 
-.debug_line       0x000000       0x1476
+.debug_line       0x000000       0x139e
  *(.debug_line)
  .debug_line      0x000000         0x24 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
  .debug_line      0x000024         0xee build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
- .debug_line      0x000112        0x218 build/C30_dsPIC33FJ256GP710A/debug/main.o
- .debug_line      0x00032a         0xba build/C30_dsPIC33FJ256GP710A/debug/system.o
- .debug_line      0x0003e4        0x187 build/C30_dsPIC33FJ256GP710A/debug/traps.o
- .debug_line      0x00056b        0x590 build/C30_dsPIC33FJ256GP710A/debug/user.o
- .debug_line      0x000afb        0x51d build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
- .debug_line      0x001018        0x45e build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
+ .debug_line      0x000112        0x140 build/C30_dsPIC33FJ256GP710A/debug/main.o
+ .debug_line      0x000252         0xba build/C30_dsPIC33FJ256GP710A/debug/system.o
+ .debug_line      0x00030c        0x187 build/C30_dsPIC33FJ256GP710A/debug/traps.o
+ .debug_line      0x000493        0x590 build/C30_dsPIC33FJ256GP710A/debug/user.o
+ .debug_line      0x000a23        0x51d build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
+ .debug_line      0x000f40        0x45e build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
 
-.debug_frame      0x000000        0x348
+.debug_frame      0x000000        0x310
  *(.debug_frame)
  .debug_frame     0x000000         0x24 build/C30_dsPIC33FJ256GP710A/debug/interrupts.o
- .debug_frame     0x000024         0x5c build/C30_dsPIC33FJ256GP710A/debug/main.o
- .debug_frame     0x000080         0x24 build/C30_dsPIC33FJ256GP710A/debug/system.o
- .debug_frame     0x0000a4         0x94 build/C30_dsPIC33FJ256GP710A/debug/traps.o
- .debug_frame     0x000138         0xf4 build/C30_dsPIC33FJ256GP710A/debug/user.o
- .debug_frame     0x00022c         0xb4 build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
- .debug_frame     0x0002e0         0x68 build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
+ .debug_frame     0x000024         0x24 build/C30_dsPIC33FJ256GP710A/debug/main.o
+ .debug_frame     0x000048         0x24 build/C30_dsPIC33FJ256GP710A/debug/system.o
+ .debug_frame     0x00006c         0x94 build/C30_dsPIC33FJ256GP710A/debug/traps.o
+ .debug_frame     0x000100         0xf4 build/C30_dsPIC33FJ256GP710A/debug/user.o
+ .debug_frame     0x0001f4         0xb4 build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
+ .debug_frame     0x0002a8         0x68 build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
 
 .debug_str        0x000000        0x15f
  *(.debug_str)
@@ -2126,52 +2126,51 @@ __c30_signature
  .config_JTAGEN
                   0x0157f0          0x2 build/C30_dsPIC33FJ256GP710A/debug/configuration_bits.o
 
-.const              0x8950         0x68 load address 0x000950  
+.const              0x8950         0x58 load address 0x000950  
  .const             0x8950         0x34 build/C30_dsPIC33FJ256GP710A/debug/user.o
  .const             0x8984         0x24 build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
- .const             0x89a8         0x10 build/C30_dsPIC33FJ256GP710A/debug/main.o
 
-.text             0x0009b8       0x2524
- .text            0x0009b8       0x1968 build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
-                  0x0009b8                  _MadgwickAHRSupdate
-                  0x001afa                  _MadgwickAHRSupdateIMU
-                  0x002230                  _invSqrt
- .text            0x002320        0x5ca build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
-                  0x002320                  _I2C1_write_byte
-                  0x002382                  _I2C1_read_byte
-                  0x00240e                  _I2C1_read_bytes
-                  0x0024ca                  _initMPU9150
-                  0x0024fe                  _get9dof
-                  0x002514                  _getAccGyro
-                  0x002526                  _getMag
-                  0x00254e                  _translateMeasurements
-                  0x00275c                  _calibrateGyro
-                  0x0027f6                  _transformation
- .text            0x0028ea        0x4c2 build/C30_dsPIC33FJ256GP710A/debug/user.o
-                  0x0028ea                  _InitApp
-                  0x00291a                  _InitIO
-                  0x00292e                  _MapPins
-                  0x002970                  _InitTimer
-                  0x002998                  _initUART1
-                  0x0029ee                  _intiI2C1
-                  0x002a02                  _print_line_uart1
-                  0x002a56                  _print_uart1
-                  0x002a8a                  _print_string
-                  0x002ab2                  _send_floats_to_PC
-                  0x002b2a                  _floatToLong
-                  0x002b48                  _test_mpu9150
-                  0x002c0a                  _rad2deg
-                  0x002c28                  _quat_2_euler
- .text            0x002dac        0x130 build/C30_dsPIC33FJ256GP710A/debug/main.o
-                  0x002dac                  _main
+.text             0x0009a8       0x23f4
+ .text            0x0009a8       0x1968 build/C30_dsPIC33FJ256GP710A/debug/MadgwickAHRS.o
+                  0x0009a8                  _MadgwickAHRSupdate
+                  0x001aea                  _MadgwickAHRSupdateIMU
+                  0x002220                  _invSqrt
+ .text            0x002310        0x5ca build/C30_dsPIC33FJ256GP710A/debug/mpu9150.o
+                  0x002310                  _I2C1_write_byte
+                  0x002372                  _I2C1_read_byte
+                  0x0023fe                  _I2C1_read_bytes
+                  0x0024ba                  _initMPU9150
+                  0x0024ee                  _get9dof
+                  0x002504                  _getAccGyro
+                  0x002516                  _getMag
+                  0x00253e                  _translateMeasurements
+                  0x00274c                  _calibrateGyro
+                  0x0027e6                  _transformation
+ .text            0x0028da        0x4c2 build/C30_dsPIC33FJ256GP710A/debug/user.o
+                  0x0028da                  _InitApp
+                  0x00290a                  _InitIO
+                  0x00291e                  _MapPins
+                  0x002960                  _InitTimer
+                  0x002988                  _initUART1
+                  0x0029de                  _intiI2C1
+                  0x0029f2                  _print_line_uart1
+                  0x002a46                  _print_uart1
+                  0x002a7a                  _print_string
+                  0x002aa2                  _send_floats_to_PC
+                  0x002b1a                  _floatToLong
+                  0x002b38                  _test_mpu9150
+                  0x002bfa                  _rad2deg
+                  0x002c18                  _quat_2_euler
 
-.dinit            0x002edc         0x4a
- .dinit           0x002edc         0x4a data_init
+.dinit            0x002d9c         0x4a
+ .dinit           0x002d9c         0x4a data_init
 
-.init.delay32     0x002f26         0x1c
- .init.delay32    0x002f26         0x1c d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
-                  0x002f26                  ___delay32
+.init.delay32     0x002de6         0x1c
+ .init.delay32    0x002de6         0x1c d:/program files (x86)/microchip/xc16/v1.23/bin/bin/../../lib\libpic30-elf.a(delay32ep.eo)
+                  0x002de6                  ___delay32
 
-.text             0x002f42          0xe
- .text            0x002f42          0xe build/C30_dsPIC33FJ256GP710A/debug/system.o
-                  0x002f42                  _ConfigureOscillator
+.text             0x002e02         0x1c
+ .text            0x002e02          0xe build/C30_dsPIC33FJ256GP710A/debug/main.o
+                  0x002e02                  _main
+ .text            0x002e10          0xe build/C30_dsPIC33FJ256GP710A/debug/system.o
+                  0x002e10                  _ConfigureOscillator

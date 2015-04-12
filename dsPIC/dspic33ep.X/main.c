@@ -45,6 +45,7 @@ char MAG = 0xDE;
 float euler[3];
 int delay_less = 0;
 int init_converge_counter = 0;
+float yawOffSet=0;
 
 int16_t main(void) {
     float measurements[9];
@@ -94,10 +95,10 @@ int16_t main(void) {
 
             float quat[4] = {q0, q1, q2, q3};
             quat_2_euler(quat, euler);
-            euler[0] = rad2deg(euler[0]); //convert to deg
+            euler[0] = rad2deg(euler[0])-yawOffSet; //convert to deg and apply offset
             euler[1] = rad2deg(euler[1]);
             euler[2] = rad2deg(euler[2]);
-            send_floats_to_PC(euler, 3); //send pitch roll yaw
+            send_floats_to_PC(euler, 3); //send yaw pitch roll
             sendMagwickFlag = 0;
             delay_less = 1;
 
@@ -106,7 +107,11 @@ int16_t main(void) {
             LATBbits.LATB6 = 1;
             calibrateGyro();
             LATBbits.LATB6 = 0;
-        } //11.7 ms
+        } else if(calibrate_yaw_flag){
+            yawOffSet=euler[0];//remembers the last yaw as offset
+            calibrate_yaw_flag=0;
+        }
+        //11.7 ms
 
         if (init_converge_counter < 600) {
             init_converge_counter++;

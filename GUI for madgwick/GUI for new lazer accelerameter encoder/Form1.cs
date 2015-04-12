@@ -70,9 +70,7 @@ namespace GUI_for_new_lazer_accelerameter_encoder
         double Qvalue = 0;
 
         double dt = 0.0014;
-        double sigmaAcc = 0;
-        double accCenter = 0.98;
-        int stable = 0;
+        double old_ax=0,old_ay=0;
         /// <summary>
         /// ///////////////variables for aduino kalman
         /// </summary>
@@ -86,13 +84,15 @@ namespace GUI_for_new_lazer_accelerameter_encoder
 
         byte[] askForOneMeasurementCommand = { 0x31 };
         byte[] Calibrate_gyro_Command = { 0x33 };
+        byte[] Calibrate_yaw_Command = { 0x32 };
+        
         byte[] stopStreamCommand = { 0x38 };
 
         int screenX_init, screenY_init,filterX_init,filterY_init;
         Boolean mouse_control = false;
         int magnifier = 100;
         int lowpassX, lowpassY;
-        double lowpassBeta = 0.45;
+        double lowpassBeta = 0.95;
 
         public Form1()
         {
@@ -579,12 +579,26 @@ namespace GUI_for_new_lazer_accelerameter_encoder
             ay = -ay;
             ax = -ax;
             listAccx.Add(i, ax);//yaw
-            listAccy.Add(i, ay);//roll
-            listAccz.Add(i, az);//picth
+            listAccy.Add(i, az);//roll
+            listAccz.Add(i, ay);//picth
+
             madgwickAHRS.defaultx = (int)ax;
-            madgwickAHRS.defaulty = (int)az;
+            madgwickAHRS.defaulty = (int)ay;
+
+
+            if ((Math.Abs(ax - old_ax) >= 10)|(Math.Abs(ay - old_ay) >= 10))
+            {
+                lowpassBeta = 0.05;
+            }
+            else {
+                lowpassBeta = 0.90;
+            }
+            old_ax = ax; old_ay = ay;
+
             lowpassX = (int)(lowpassBeta * lowpassX +(ax - filterX_init) * magnifier * (1 - lowpassBeta));
-            lowpassY = (int)(lowpassBeta * lowpassY + (az - filterY_init) * magnifier * (1 - lowpassBeta));
+            lowpassY = (int)(lowpassBeta * lowpassY + (ay - filterY_init) * magnifier * (1 - lowpassBeta));
+           
+
             if (mouse_control) {
 
                 Cursor.Position = new Point((lowpassX + screenX_init), (lowpassY + screenY_init));
@@ -674,6 +688,11 @@ namespace GUI_for_new_lazer_accelerameter_encoder
             serialPort.Write(Calibrate_gyro_Command, 0, 1);//initiate communication
         }
 
+        private void button_reset_yaw_Click(object sender, EventArgs e)
+        {
+            serialPort.Write(Calibrate_yaw_Command, 0, 1);//initiate communication
+        }
+
 
 
 
@@ -734,7 +753,7 @@ namespace GUI_for_new_lazer_accelerameter_encoder
                    // Console.WriteLine(" ");
                     _processMeasurement();
                 }
-                Thread.Sleep(50);
+                Thread.Sleep(25);
                //_serialPort.Write(askForOneMeasurementCommand, 0, 1);
                _serialPort.Write(askForOneMeasurementCommand, 0, 1);
             }
