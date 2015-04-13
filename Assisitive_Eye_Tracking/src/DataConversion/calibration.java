@@ -47,7 +47,7 @@ public class calibration
 		frame1.setBounds(0,0,frame1.getWidth(), frame1.getHeight());
 		//Panel panel1 = new Panel();
 		
-		frame1.setVisible(true);
+		
 		
 		
 	}
@@ -58,7 +58,7 @@ public class calibration
 	{
 		boolean calFinished = false; 
 		 
-		
+		frame1.setVisible(true);
 		int intervalTime = 50;
 		
 		if(runtimeTwo < intervalTime)
@@ -108,7 +108,7 @@ public class calibration
 	public boolean runCalTwo()
 	{
 		boolean calFinished = false; 
-		 
+		frame1.setVisible(true);
 		
 		int intervalTime = 100;
 		
@@ -172,6 +172,22 @@ public class calibration
 	public int getYPosition()
 	{
 		return posHeight; 
+	}
+	public int getXCenter()
+	{
+		 
+		return intWidth/2; 
+	}
+	public int getYCenter()
+	{
+		return intHeight/2; 
+		 
+	}			
+	public void resetRuntimes()
+	{
+		runtime =0; 
+		runtimeTwo =0; 
+		
 	}
 
 }

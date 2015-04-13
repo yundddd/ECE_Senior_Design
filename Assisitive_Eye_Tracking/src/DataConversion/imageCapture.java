@@ -139,7 +139,7 @@ public class imageCapture
 			vc.read(webcamImage);
 			
 			//Real code for real testing
-			/*
+			
 			//Gets image from glasses
 			Imgproc.cvtColor(webcamImage, grayImg,Imgproc.COLOR_BGR2GRAY);
 			Imgproc.GaussianBlur(grayImg, grayImg, new Size(GAUSSIAN_KERNEL_SIZE,GAUSSIAN_KERNEL_SIZE),0,0);
@@ -154,11 +154,12 @@ public class imageCapture
 				xPos = (float) centroid.x;
 				yPos = (float) centroid.y;
 			}
-			*/
+			
 			
 			//Code for David Personal testing only
 			//Do Not Touch
 			//That means you STEVE!
+			/*
 			Imgproc.cvtColor(webcamImage, grayImg, Imgproc.COLOR_BGR2GRAY);
 			Core.inRange(webcamImage, hsv_min, hsv_max, thresholded);
 			Imgproc.GaussianBlur(thresholded, thresholded, new Size(9,9),0,0);
@@ -186,6 +187,7 @@ public class imageCapture
 	        {
 	        	System.out.print("nothing");
 	        }
+	        */
 			//End David's personal code
 			//I swear Steve if you start renaming variables as slightly different names
 			//I will have you banished to the shadow realm
