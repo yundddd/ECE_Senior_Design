@@ -106,6 +106,8 @@ public class positionCalculator
 	double lastYaw; 
 	double lastPitch; 
 	
+	static String os = System.getProperty("os.name");
+	
 	public positionCalculator(int choseMethod) throws InterruptedException, IOException
 	{
 		//Chooses which algorithm will be used for the calibration 
@@ -120,8 +122,8 @@ public class positionCalculator
 		frame1.setSize(intWidth,intHeight);
 		frame1.setBounds(0,0,frame1.getWidth(), frame1.getHeight());
 		frame1.setVisible(false);
-		System.out.print("Total width " + intWidth);
-		
+		System.out.println("Total width " + intWidth);
+		System.out.println("Running on " + os);
 		portCom.initialize();
 		
 		if(method == 1)
@@ -622,8 +624,16 @@ public class positionCalculator
 	public void dataCalculation() throws IOException, InterruptedException
 	{
 		
-		cal.resetRuntimes(); 
-		File outFile = new File("C:\\Users\\David\\Desktop\\out.txt");
+		cal.resetRuntimes();
+		File outFile;
+		if (os == "Windows")
+		{
+			outFile = new File("C:\\Users\\David\\Desktop\\out.txt");
+		}
+		else
+		{
+			outFile = new File("/home/kevin/out.txt");
+		}
 		FileWriter fw = new FileWriter(outFile.getAbsoluteFile());
 		BufferedWriter bw = new BufferedWriter(fw);
 		

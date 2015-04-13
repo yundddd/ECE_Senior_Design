@@ -23,10 +23,11 @@ public class IMU implements SerialPortEventListener {
 	// CONSTANTS
         /** The port we're normally going to use. */
 	private static final String WINDOWS_PORT = "COM5";
+	private static final String LINUX_PORT = "/dev/ttyUSB0";
 	private static final String DEFAULT_PORT_NAMES[] = { 
 			"/dev/tty.usbserial-A9007UX1", // Mac OS X
                         "/dev/ttyACM0", // Raspberry Pi
-			"/dev/ttyUSB0", // Linux
+			LINUX_PORT, // Linux
 			WINDOWS_PORT, // Windows
 	};
 	
@@ -53,6 +54,8 @@ public class IMU implements SerialPortEventListener {
                 // gets us into the while loop and was suggested here was suggested http://www.raspberrypi.org/phpBB3/viewtopic.php?f=81&t=32186
 		try {
                 System.setProperty("gnu.io.rxtx.SerialPorts", "/dev/ttyACM0");
+                System.setProperty("gnu.io.rxtx.SerialPorts", WINDOWS_PORT);
+        		System.setProperty("gnu.io.rxtx.SerialPorts", LINUX_PORT);
 		}
 		catch (Exception e)
 		{
@@ -60,7 +63,6 @@ public class IMU implements SerialPortEventListener {
 			System.out.println("System Set Property Cmd FAILED.");
 			System.out.println(e.getMessage());
 		}
-		System.setProperty("gnu.io.rxtx.SerialPorts", WINDOWS_PORT);
 		
 		CommPortIdentifier portId = null;
 		Enumeration portEnum = CommPortIdentifier.getPortIdentifiers();
@@ -69,6 +71,7 @@ public class IMU implements SerialPortEventListener {
 		while (portEnum.hasMoreElements()) {
 			CommPortIdentifier currPortId = (CommPortIdentifier) portEnum.nextElement();
 			for (String portName : DEFAULT_PORT_NAMES) {
+				System.out.println("1: "+ currPortId.getName());
 				if (currPortId.getName().equals(portName)) {
 					portId = currPortId;
 					break;
