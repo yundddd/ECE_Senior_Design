@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
-class mouseOverlay extends JComponent
+class mouseDebugOverlay extends JComponent
 {
 	Point posMouse;
 	Point absPos;
@@ -22,11 +22,13 @@ class mouseOverlay extends JComponent
 	JFrame parent;
 	JTextArea posUpdate;
 	
-	public mouseOverlay(JFrame parent, JTextArea posUpdate)
+	public mouseDebugOverlay(JFrame parent, JTextArea posUpdate)
 	{
 		radius = 5;
 		this.parent = parent;
 		this.posUpdate = posUpdate;
+		this.absPos = new Point();
+		this.posMouse = new Point();
 		//this.addMouseMotionListener(this);
 	}
 	
@@ -51,15 +53,10 @@ class mouseOverlay extends JComponent
 		this.absPos = absPos;
 	}
 	
-	public void updatePosFrame()
+	private void updatePosFrame()
 	{
 		posUpdate.setText("Window X: ".concat(Integer.toString(posMouse.x)).concat("\nWindow Y: ".concat(Integer.toString(posMouse.y))).concat("\n").concat(
 		  "Eye X: ".concat(Integer.toString(absPos.x)).concat("\nEye Y: ".concat(Integer.toString(absPos.y))).concat("\n")));
-	}
-	
-	public void highlightLabel()
-	{
-		//Extra Graphical Feature. Highlight JLabel when we want user to look at it.
 	}
 	
 }
